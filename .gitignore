@@ -1,0 +1,7 @@
+*.a
+*.d
+*.exe
+*.o
+*.out
+/push_swap
+/checker
