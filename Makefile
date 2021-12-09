@@ -10,14 +10,14 @@ OBJ := obj
 LIB := libft
 
 LIBFT := $(LIB)/libft.a
-LIBFT_DEPS := $(addprefix $(LIB)/, $(shell $(MAKE) -sC $(LIB) object_list))
+LIBFT_OBJS := $(addprefix $(LIB)/, $(shell $(MAKE) -sC $(LIB) object_list))
 
 OBJS := $(addprefix $(OBJ)/, $(SRCS:.c=.o))
 DEPS := $(OBJS:.o=.d)
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror
-CPPFLAGS	:= -I$(INC) -I$(LIB) -MMD
+CPPFLAGS	:= -I$(INC) -I$(LIB) -MMD -MP
 LDFLAGS		:= -L$(LIB)
 LDLIBS		:= -lft
 
@@ -42,11 +42,10 @@ $(OBJ)/%.o: $(SRC)/%.c
 $(OBJ):
 	mkdir $@
 
-$(LIBFT): $(LIBFT_DEPS)
+$(LIB)/%.o: $(LIB)/%.c
 	$(MAKE) -C $(LIB) --no-print-directory
-$(LIBFT_DEPS):
 
-$(RESOLVER): $(OBJS) $(LIBFT)
+$(RESOLVER): $(OBJS) $(LIBFT_OBJS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 $(CHECKER):
