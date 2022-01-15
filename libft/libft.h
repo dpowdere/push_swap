@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/12/14 19:56:48 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/15 09:49:10 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,26 @@ void		ft_lstpipeline_xd(t_list **lst,
 void		ft_lststream(t_list **lst, t_list *(*stream_process)(t_list **));
 void		ft_lststream_xd(t_list **lst,
 				t_list *(*stream_process)(t_list **, void *), void *extra_data);
+
+/*
+** Functions to work with doubly-linked lists
+** ==========================================
+*/
+typedef struct s_dlist
+{
+	void			*content;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}			t_dlist;
+
+int			dl_size(t_dlist *lst);
+t_dlist		*dl_last(t_dlist *lst);
+t_dlist		*dl_new(void *content);
+void		*dl_pop(t_dlist **lst);
+void		dl_add_back(t_dlist **lst, t_dlist *new);
+void		dl_add_front(t_dlist **lst, t_dlist *new);
+void		dl_clear(t_dlist **lst, void (*del)(void *));
+void		dl_erase(t_dlist **lst, void (*del)(void *));
+void		dl_insert(t_dlist **current, t_dlist *new_next);
 
 #endif

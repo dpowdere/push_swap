@@ -83,7 +83,17 @@ CONTENTS := \
 	ft_lstpopconv.c \
 	ft_lstpopreduce.c \
 	ft_lstreduce.c \
-	ft_lstsize.c
+	ft_lstsize.c \
+\
+	dl_add_back.c \
+	dl_add_front.c \
+	dl_clear.c \
+	dl_erase.c \
+	dl_insert.c \
+	dl_last.c \
+	dl_new.c \
+	dl_pop.c \
+	dl_size.c
 
 AR := ar
 ARFLAGS := crs
