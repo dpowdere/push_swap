@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2022/01/17 20:41:41 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/17 21:22:01 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,8 @@ CONTENTS := \
 	ft_stack_pop.c \
 	ft_stack_push.c \
 	ft_stack_reverse_rotate.c \
-	ft_stack_rotate.c
+	ft_stack_rotate.c \
+	ft_stack_top_swap.c
 
 AR := ar
 ARFLAGS := crs

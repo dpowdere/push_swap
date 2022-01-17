@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 20:40:22 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 21:21:50 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,5 +195,6 @@ void	*ft_stack_pop(t_stack *stack);
 void	ft_stack_push(t_stack *stack, void *data);
 void	ft_stack_rotate(t_stack *stack);
 void	ft_stack_reverse_rotate(t_stack *stack);
+void	ft_stack_top_swap(t_stack *stack);
 
 #endif
