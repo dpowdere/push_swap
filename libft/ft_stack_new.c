@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackclear.c                                    :+:      :+:    :+:   */
+/*   ft_stack_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 15:29:11 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 16:26:46 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/17 20:44:27 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/17 20:46:02 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+#include <stdlib.h>
+
 #include "libft.h"
 
-void	ft_stackclear(t_stack *stack, void (*f)(void *))
+t_stack	*ft_stack_new(void)
 {
-	if (!stack || !f)
-		return ;
-	dl_clear(&stack->top, f);
-	stack->bottom = NULL;
-	stack->size = 0;
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack != NULL)
+		ft_stack_init(stack);
+	return stack;
 }

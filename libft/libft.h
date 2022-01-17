@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 15:37:27 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:40:22 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,11 +187,13 @@ typedef struct s_stack
 	size_t	size;
 }		t_stack;
 
-t_stack	*ft_stacknew(void);
-void	ft_stackclear(t_stack *stack, void (*f)(void *));
-void	ft_stackdestroy(t_stack **stack, void (*f)(void *));
-void	ft_stackinit(t_stack *stack);
-void	*ft_stackpop(t_stack *stack);
-void	ft_stackpush(t_stack *stack, void *data);
+t_stack	*ft_stack_new(void);
+void	ft_stack_clear(t_stack *stack, void (*f)(void *));
+void	ft_stack_destroy(t_stack **stack, void (*f)(void *));
+void	ft_stack_init(t_stack *stack);
+void	*ft_stack_pop(t_stack *stack);
+void	ft_stack_push(t_stack *stack, void *data);
+void	ft_stack_rotate(t_stack *stack);
+void	ft_stack_reverse_rotate(t_stack *stack);
 
 #endif

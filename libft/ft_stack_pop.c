@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackpush.c                                     :+:      :+:    :+:   */
+/*   ft_stack_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 15:42:45 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 16:25:13 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/17 20:44:27 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/17 20:45:26 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 #include "libft.h"
 
-void	ft_stackpush(t_stack *stack, void *data)
+void	*ft_stack_pop(t_stack *stack)
 {
-	t_dlist	*new;
+	void	*data;
 
-	if (!stack || !data)
-		return ;
-	new = dl_new(data);
-	if (!new)
-		return ;
-	dl_add_front(&stack->top, new);
-	if (!stack->bottom)
-		stack->bottom = stack->top;
-	++stack->size;
+	if (!stack)
+		return NULL;
+	data = dl_pop(&stack->top);
+	if (!stack->top)
+		stack->bottom = NULL;
+	--stack->size;
+	return data;
 }

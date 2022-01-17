@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2021/12/08 17:42:26 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/17 20:41:41 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,12 +95,14 @@ CONTENTS := \
 	dl_pop.c \
 	dl_size.c \
 \
-	ft_stacknew.c \
-	ft_stackclear.c \
-	ft_stackdestroy.c \
-	ft_stackinit.c \
-	ft_stackpop.c \
-	ft_stackpush.c
+	ft_stack_clear.c \
+	ft_stack_destroy.c \
+	ft_stack_init.c \
+	ft_stack_new.c \
+	ft_stack_pop.c \
+	ft_stack_push.c \
+	ft_stack_reverse_rotate.c \
+	ft_stack_rotate.c
 
 AR := ar
 ARFLAGS := crs
