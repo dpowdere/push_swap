@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dl_add_front.c                                     :+:      :+:    :+:   */
+/*   ft_stackclear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/15 08:39:24 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 16:06:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/17 15:29:11 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/17 16:26:46 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	dl_add_front(t_dlist **lst, t_dlist *new)
+void	ft_stackclear(t_stack *stack, void (*f)(void *))
 {
-	if (!lst || !new)
+	if (!stack || !f)
 		return ;
-	new->next = *lst;
-	(*lst)->prev = new;
-	*lst = new;
+	dl_clear(&stack->top, f);
+	stack->bottom = NULL;
+	stack->size = 0;
 }

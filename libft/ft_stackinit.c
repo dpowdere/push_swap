@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dl_add_front.c                                     :+:      :+:    :+:   */
+/*   ft_stackinit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/15 08:39:24 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 16:06:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/17 15:17:31 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/17 15:20:04 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	dl_add_front(t_dlist **lst, t_dlist *new)
+void	ft_stackinit(t_stack *stack)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	(*lst)->prev = new;
-	*lst = new;
+	stack->top = NULL;
+	stack->bottom = NULL;
+	stack->size = 0;
 }

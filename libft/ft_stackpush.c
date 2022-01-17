@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dl_add_front.c                                     :+:      :+:    :+:   */
+/*   ft_stackpush.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/15 08:39:24 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 16:06:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/17 15:42:45 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/17 16:25:13 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	dl_add_front(t_dlist **lst, t_dlist *new)
+void	ft_stackpush(t_stack *stack, void *data)
 {
-	if (!lst || !new)
+	t_dlist	*new;
+
+	if (!stack || !data)
 		return ;
-	new->next = *lst;
-	(*lst)->prev = new;
-	*lst = new;
+	new = dl_new(data);
+	if (!new)
+		return ;
+	dl_add_front(&stack->top, new);
+	if (!stack->bottom)
+		stack->bottom = stack->top;
+	++stack->size;
 }

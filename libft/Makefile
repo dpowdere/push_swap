@@ -93,7 +93,14 @@ CONTENTS := \
 	dl_last.c \
 	dl_new.c \
 	dl_pop.c \
-	dl_size.c
+	dl_size.c \
+\
+	ft_stacknew.c \
+	ft_stackclear.c \
+	ft_stackdestroy.c \
+	ft_stackinit.c \
+	ft_stackpop.c \
+	ft_stackpush.c
 
 AR := ar
 ARFLAGS := crs

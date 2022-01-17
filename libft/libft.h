@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/15 09:49:10 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 15:37:27 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,5 +175,23 @@ void		dl_add_front(t_dlist **lst, t_dlist *new);
 void		dl_clear(t_dlist **lst, void (*del)(void *));
 void		dl_erase(t_dlist **lst, void (*del)(void *));
 void		dl_insert(t_dlist **current, t_dlist *new_next);
+
+/*
+** Stack
+** =====
+*/
+typedef struct s_stack
+{
+	t_dlist	*top;
+	t_dlist *bottom;
+	size_t	size;
+}		t_stack;
+
+t_stack	*ft_stacknew(void);
+void	ft_stackclear(t_stack *stack, void (*f)(void *));
+void	ft_stackdestroy(t_stack **stack, void (*f)(void *));
+void	ft_stackinit(t_stack *stack);
+void	*ft_stackpop(t_stack *stack);
+void	ft_stackpush(t_stack *stack, void *data);
 
 #endif
