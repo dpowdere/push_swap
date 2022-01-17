@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 21:51:08 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:27:17 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,18 +185,18 @@ void		dl_iter_ix(t_dlist *lst, void (*f)(void *, int ix, int is_last));
 typedef struct s_stack
 {
 	t_dlist	*top;
-	t_dlist *bottom;
+	t_dlist	*bottom;
 	size_t	size;
-}		t_stack;
+}			t_stack;
 
-t_stack	*ft_stack_new(void);
-void	ft_stack_clear(t_stack *stack, void (*f)(void *));
-void	ft_stack_destroy(t_stack **stack, void (*f)(void *));
-void	ft_stack_init(t_stack *stack);
-void	*ft_stack_pop(t_stack *stack);
-void	ft_stack_push(t_stack *stack, void *data);
-void	ft_stack_rotate(t_stack *stack);
-void	ft_stack_reverse_rotate(t_stack *stack);
-void	ft_stack_top_swap(t_stack *stack);
+t_stack		*ft_stack_new(void);
+void		ft_stack_clear(t_stack *stack, void (*f)(void *));
+void		ft_stack_destroy(t_stack **stack, void (*f)(void *));
+void		ft_stack_init(t_stack *stack);
+void		*ft_stack_pop(t_stack *stack);
+void		ft_stack_push(t_stack *stack, void *data);
+void		ft_stack_rotate(t_stack *stack);
+void		ft_stack_reverse_rotate(t_stack *stack);
+void		ft_stack_top_swap(t_stack *stack);
 
 #endif

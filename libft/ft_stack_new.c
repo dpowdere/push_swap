@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:44:27 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 20:46:02 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:25:41 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ t_stack	*ft_stack_new(void)
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (stack != NULL)
 		ft_stack_init(stack);
-	return stack;
+	return (stack);
 }
