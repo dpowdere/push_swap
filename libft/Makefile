@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2022/01/17 21:22:01 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/17 21:48:28 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ CONTENTS := \
 	dl_clear.c \
 	dl_erase.c \
 	dl_insert.c \
+	dl_iter.c \
 	dl_last.c \
 	dl_new.c \
 	dl_pop.c \

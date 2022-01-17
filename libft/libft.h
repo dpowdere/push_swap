@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 21:21:50 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/17 21:51:08 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,8 @@ void		dl_add_front(t_dlist **lst, t_dlist *new);
 void		dl_clear(t_dlist **lst, void (*del)(void *));
 void		dl_erase(t_dlist **lst, void (*del)(void *));
 void		dl_insert(t_dlist **current, t_dlist *new_next);
+void		dl_iter(t_dlist *lst, void (*f)(void *));
+void		dl_iter_ix(t_dlist *lst, void (*f)(void *, int ix, int is_last));
 
 /*
 ** Stack
