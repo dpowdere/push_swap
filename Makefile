@@ -20,6 +20,9 @@ CFLAGS		:= -Wall -Wextra -Werror
 CPPFLAGS	:= -I$(INC) -I$(LIB) -MMD -MP
 LDFLAGS		:= -L$(LIB)
 LDLIBS		:= -lft
+ifdef DEBUG
+  CFLAGS += -g3
+endif
 
 all: $(RESOLVER) $(CHECKER)
 
