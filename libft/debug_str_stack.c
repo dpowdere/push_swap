@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:00:22 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 18:38:25 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 20:14:42 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static inline void	debug_str_stack_header(t_stack *stack)
 	else
 		ft_eprint("x");
 	ft_eprint(", size=");
-	ft_putnbr_fd(STDERR_FILENO, stack->size);
+	ft_putnbr_fd(stack->size, STDERR_FILENO);
 	ft_eprint("\n");
 }
 
