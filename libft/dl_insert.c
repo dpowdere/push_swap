@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 09:49:55 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 16:06:03 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:32:06 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	dl_prv_insert_head(t_dlist **curr, t_dlist *head)
 	else
 	{
 		tail = dl_last(head);
-		tail->next = *curr;
-		head->prev = (*curr)->prev;
 		if ((*curr)->prev)
 			(*curr)->prev->next = head;
+		head->prev = (*curr)->prev;
+		tail->next = *curr;
 		(*curr)->prev = tail;
 	}
 }
@@ -81,11 +81,11 @@ void	dl_prv_insert_tail(t_dlist **curr, t_dlist *tail)
 		*curr = dl_first(tail);
 	else
 	{
-		head = dl_last(tail);
-		tail->next = *curr;
-		head->prev = (*curr)->prev;
+		head = dl_first(tail);
 		if ((*curr)->prev)
 			(*curr)->prev->next = head;
+		head->prev = (*curr)->prev;
+		tail->next = *curr;
 		(*curr)->prev = tail;
 	}
 }

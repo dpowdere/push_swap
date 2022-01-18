@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:13:03 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 17:25:22 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:39:05 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	dl_add_back_head(t_dlist **lst, t_dlist *head)
 void	dl_add_back_tail(t_dlist **lst, t_dlist *tail)
 {
 	t_dlist	*back;
-	t_dlist *head;
+	t_dlist	*head;
 
 	if (!lst || !tail)
 		return ;
@@ -55,7 +55,7 @@ void	dl_add_back_tail(t_dlist **lst, t_dlist *tail)
 void	dl_add_front_head(t_dlist **lst, t_dlist *head)
 {
 	t_dlist	*front;
-	t_dlist *tail;
+	t_dlist	*tail;
 
 	if (!lst || !head)
 		return ;
@@ -76,7 +76,7 @@ void	dl_add_front_head(t_dlist **lst, t_dlist *head)
 void	dl_add_front_tail(t_dlist **lst, t_dlist *tail)
 {
 	t_dlist	*front;
-	t_dlist *head;
+	t_dlist	*head;
 
 	if (!lst || !tail)
 		return ;

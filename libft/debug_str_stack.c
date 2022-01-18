@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:00:22 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 18:02:14 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:38:25 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	debug_str_stack(t_stack *stack)
 	t_dlist	*cursor;
 
 	debug_str_stack_header(stack);
-
 	ft_eprint("top-to-bottom:" AEC_YELLOW);
 	cursor = stack->top;
 	while (cursor)
@@ -43,7 +42,6 @@ void	debug_str_stack(t_stack *stack)
 		ft_eprint((char *)cursor->content);
 		cursor = cursor->next;
 	}
-
 	ft_eprint(AEC_RESET "\nbottom-to-top:" AEC_YELLOW);
 	cursor = stack->bottom;
 	while (cursor)
@@ -54,4 +52,3 @@ void	debug_str_stack(t_stack *stack)
 	}
 	ft_eprint(AEC_RESET "\n");
 }
-

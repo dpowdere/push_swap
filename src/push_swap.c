@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 17:55:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 18:03:50 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:33:36 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,14 @@ int	main(int argc, char *argv[])
 	dl_nxt_insert_tail(&stack->top->next, dl_new(ft_new_str("y")));
 	debug_str_stack(stack);
 
-	dl_prv_insert_head(&stack->top->next->next, dl_new(ft_new_str("n")));
+	dl_nxt_insert_head(&stack->top->next, dl_new(ft_new_str("z")));
+	debug_str_stack(stack);
+
+	dl_prv_insert_head(&stack->top->next->next, dl_new(ft_new_str("2")));
 	debug_str_stack(stack);
 
 /*
-	dl_prv_insert_head(&stack->top->next->next, dl_new(ft_new_str("m")));
+	dl_prv_insert_head(&stack->top->next->next, dl_new(ft_new_str("3")));
 	debug_str_stack(stack);
 */
 	ft_stack_destroy(&stack, free);
