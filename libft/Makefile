@@ -102,9 +102,8 @@ CONTENTS := \
 	ft_stack_new.c \
 	ft_stack_pop.c \
 	ft_stack_push.c \
-	ft_stack_reverse_rotate.c \
 	ft_stack_rotate.c \
-	ft_stack_top_swap.c
+	ft_stack_swap.c
 
 AR := ar
 ARFLAGS := crs

@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 08:36:02 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/15 08:38:57 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:36:47 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	*dl_pop(t_dlist **lst)
 	elem = *lst;
 	content = elem->content;
 	*lst = elem->next;
+	if (*lst)
+		(*lst)->prev = NULL;
 	free(elem);
 	return (content);
 }

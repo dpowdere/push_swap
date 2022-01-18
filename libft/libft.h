@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/17 22:27:17 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:59:21 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,10 @@ void		dl_add_front(t_dlist **lst, t_dlist *new);
 void		dl_clear(t_dlist **lst, void (*del)(void *));
 void		dl_erase(t_dlist **lst, void (*del)(void *));
 void		dl_insert(t_dlist **current, t_dlist *new_next);
-void		dl_iter(t_dlist *lst, void (*f)(void *));
-void		dl_iter_ix(t_dlist *lst, void (*f)(void *, int ix, int is_last));
+void		dl_iternex(t_dlist *lst, void (*f)(void *));
+void		dl_iterpre(t_dlist *lst, void (*f)(void *));
+void		dl_iternex_ix(t_dlist *lst, void (*f)(void *, int ix, int is_last));
+void		dl_iterpre_ix(t_dlist *lst, void (*f)(void *, int ix, int is_1st));
 
 /*
 ** Stack
@@ -186,7 +188,7 @@ typedef struct s_stack
 {
 	t_dlist	*top;
 	t_dlist	*bottom;
-	size_t	size;
+	int		size;
 }			t_stack;
 
 t_stack		*ft_stack_new(void);
@@ -196,7 +198,26 @@ void		ft_stack_init(t_stack *stack);
 void		*ft_stack_pop(t_stack *stack);
 void		ft_stack_push(t_stack *stack, void *data);
 void		ft_stack_rotate(t_stack *stack);
-void		ft_stack_reverse_rotate(t_stack *stack);
-void		ft_stack_top_swap(t_stack *stack);
+void		ft_stack_rotate_reverse(t_stack *stack);
+void		ft_stack_swap(t_stack *stack);
+
+/*
+** ANSI Escape Code
+** ================
+*/
+# define AEC_BLUE			"\x1b[34m"
+# define AEC_BOLD			"\x1b[1m"
+# define AEC_BOLD_GREEN		"\x1b[32;1m"
+# define AEC_BOLD_RED		"\x1b[31;1m"
+# define AEC_GRAY			"\x1b[38;5;247m"
+# define AEC_GREEN			"\x1b[32m"
+# define AEC_RED			"\x1b[31m"
+# define AEC_RESET			"\x1b[0m"
+# define AEC_YELLOW			"\x1b[33m"
+
+# define AEC_ERASE_EOL		"\x1b[0K"
+# define AEC_ERASE_LINE		"\x1b[2K"
+# define AEC_HIDE_CURSOR	"\x1b[?25l"
+# define AEC_SHOW_CURSOR	"\x1b[?25h"
 
 #endif
