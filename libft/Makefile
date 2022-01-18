@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2022/01/17 21:48:28 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/18 18:14:32 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ CONTENTS := \
 	ft_is_big_endian.c \
 	ft_itoa.c \
 	ft_jbase.c \
+	ft_new.c \
 	ft_ptrarr_len.c \
 	ft_putchar_fd.c \
 	ft_putendl_fd.c \
@@ -110,8 +111,13 @@ ARFLAGS := crs
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 CPPFLAGS := -MMD -MP
+
 ifdef DEBUG
+ifeq ($(DEBUG),1)
   CFLAGS += -g3
+  CPPFLAGS += -DDEBUG=1
+  CONTENTS += debug_str_stack.c
+endif
 endif
 
 NAME := $(LIBNAME).a

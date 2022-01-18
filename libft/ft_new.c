@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_push.c                                    :+:      :+:    :+:   */
+/*   ft_new.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 20:44:27 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 17:21:17 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/18 17:30:18 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/18 17:57:24 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+#include <stdlib.h>
+
 #include "libft.h"
 
-void	ft_stack_push(t_stack *stack, void *data)
+int	*ft_new_int(int n)
 {
-	t_dlist	*new;
+	int	*p;
 
-	if (!stack || !data)
-		return ;
-	new = dl_new(data);
-	if (!new)
-		return ;
-	dl_add_front_head(&stack->top, new);
-	if (!stack->bottom)
-		stack->bottom = stack->top;
-	++stack->size;
+	p = (int *)malloc(sizeof(int));
+	if (!p)
+		return (NULL);
+	*p = n;
+	return (p);
+}
+
+char	*ft_new_str(char const *str)
+{
+	size_t const	size = ft_strlen(str) + 1;
+	char			*str2;
+
+	str2 = (char *)malloc(size);
+	if (!str2)
+		return (NULL);
+	ft_strlcpy(str2, str, size);
+	return (str2);
 }

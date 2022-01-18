@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 15:58:45 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:22:13 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <wchar.h>
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 /*
 ** Standard library or syscalls
@@ -113,6 +117,12 @@ size_t		ft_wcstombs_len(const wchar_t *s);
 int			ft_wctomb_len(wchar_t wc);
 
 /*
+** Constructors
+*/
+int			*ft_new_int(int n);
+char		*ft_new_str(char const *str);
+
+/*
 ** Functions to work with linked lists
 ** ===================================
 */
@@ -175,8 +185,10 @@ t_dlist		*dl_new(void *content);
 
 void		*dl_pop(t_dlist **lst);
 
-void		dl_add_back(t_dlist **lst, t_dlist *new);
-void		dl_add_front(t_dlist **lst, t_dlist *new);
+void		dl_add_back_head(t_dlist **lst, t_dlist *head);
+void		dl_add_back_tail(t_dlist **lst, t_dlist *tail);
+void		dl_add_front_head(t_dlist **lst, t_dlist *head);
+void		dl_add_front_tail(t_dlist **lst, t_dlist *tail);
 void		dl_erase(t_dlist **current, void (*del)(void *));
 
 void		dl_nxt_clear(t_dlist **lst, void (*del)(void *));
@@ -213,6 +225,8 @@ void		ft_stack_push(t_stack *stack, void *data);
 void		ft_stack_rotate(t_stack *stack);
 void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
+
+void		debug_str_stack(t_stack *stack);
 
 /*
 ** ANSI Escape Code
