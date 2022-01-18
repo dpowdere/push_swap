@@ -85,16 +85,15 @@ CONTENTS := \
 	ft_lstreduce.c \
 	ft_lstsize.c \
 \
-	dl_add_back.c \
-	dl_add_front.c \
+	dl_add_tip.c \
 	dl_clear.c \
 	dl_erase.c \
 	dl_insert.c \
 	dl_iter.c \
-	dl_last.c \
 	dl_new.c \
 	dl_pop.c \
 	dl_size.c \
+	dl_tip.c \
 \
 	ft_stack_clear.c \
 	ft_stack_destroy.c \

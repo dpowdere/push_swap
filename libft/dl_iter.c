@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 21:48:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 12:33:32 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:52:45 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-void	dl_iternex(t_dlist *lst, void (*f)(void *))
+void	dl_nxt_iter(t_dlist *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 		return ;
@@ -25,7 +25,7 @@ void	dl_iternex(t_dlist *lst, void (*f)(void *))
 	}
 }
 
-void	dl_iterpre(t_dlist *lst, void (*f)(void *))
+void	dl_prv_iter(t_dlist *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 		return ;
@@ -41,7 +41,7 @@ void	dl_iterpre(t_dlist *lst, void (*f)(void *))
 ** 1-based index of the element of a list and whether it is the last one
 ** in the list or not.
 */
-void	dl_iternex_ix(t_dlist *lst, void (*f)(void *data, int ix, int is_last))
+void	dl_nxt_iter_ix(t_dlist *lst, void (*f)(void *data, int ix, int is_last))
 {
 	int	ix;
 
@@ -53,7 +53,7 @@ void	dl_iternex_ix(t_dlist *lst, void (*f)(void *data, int ix, int is_last))
 	}
 }
 
-void	dl_iterpre_ix(t_dlist *lst, void (*f)(void *data, int ix, int is_1st))
+void	dl_prv_iter_ix(t_dlist *lst, void (*f)(void *data, int ix, int is_1st))
 {
 	int	ix;
 

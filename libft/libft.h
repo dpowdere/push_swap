@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 13:59:21 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:58:45 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,19 +166,30 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 }			t_dlist;
 
-int			dl_size(t_dlist *lst);
+int			dl_nxt_size(t_dlist *lst);
+int			dl_prv_size(t_dlist *lst);
+
+t_dlist		*dl_first(t_dlist *lst);
 t_dlist		*dl_last(t_dlist *lst);
 t_dlist		*dl_new(void *content);
+
 void		*dl_pop(t_dlist **lst);
+
 void		dl_add_back(t_dlist **lst, t_dlist *new);
 void		dl_add_front(t_dlist **lst, t_dlist *new);
-void		dl_clear(t_dlist **lst, void (*del)(void *));
-void		dl_erase(t_dlist **lst, void (*del)(void *));
-void		dl_insert(t_dlist **current, t_dlist *new_next);
-void		dl_iternex(t_dlist *lst, void (*f)(void *));
-void		dl_iterpre(t_dlist *lst, void (*f)(void *));
-void		dl_iternex_ix(t_dlist *lst, void (*f)(void *, int ix, int is_last));
-void		dl_iterpre_ix(t_dlist *lst, void (*f)(void *, int ix, int is_1st));
+void		dl_erase(t_dlist **current, void (*del)(void *));
+
+void		dl_nxt_clear(t_dlist **lst, void (*del)(void *));
+void		dl_nxt_insert_head(t_dlist **curr, t_dlist *head);
+void		dl_nxt_insert_tail(t_dlist **curr, t_dlist *tail);
+void		dl_nxt_iter(t_dlist *lst, void (*f)(void *));
+void		dl_nxt_iter_ix(t_dlist *, void (*f)(void *, int ix, int is_last));
+
+void		dl_prv_clear(t_dlist **lst, void (*del)(void *));
+void		dl_prv_insert_head(t_dlist **curr, t_dlist *head);
+void		dl_prv_insert_tail(t_dlist **curr, t_dlist *tail);
+void		dl_prv_iter(t_dlist *lst, void (*f)(void *));
+void		dl_prv_iter_ix(t_dlist *lst, void (*f)(void *, int ix, int is_1st));
 
 /*
 ** Stack
@@ -191,11 +202,13 @@ typedef struct s_stack
 	int		size;
 }			t_stack;
 
-t_stack		*ft_stack_new(void);
 void		ft_stack_clear(t_stack *stack, void (*f)(void *));
 void		ft_stack_destroy(t_stack **stack, void (*f)(void *));
 void		ft_stack_init(t_stack *stack);
+
+t_stack		*ft_stack_new(void);
 void		*ft_stack_pop(t_stack *stack);
+
 void		ft_stack_push(t_stack *stack, void *data);
 void		ft_stack_rotate(t_stack *stack);
 void		ft_stack_rotate_reverse(t_stack *stack);
