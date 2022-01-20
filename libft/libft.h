@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/20 17:39:01 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:46:43 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,8 @@ typedef struct s_rbtree
 }			t_rbtree;
 
 t_rbtree	*rbt_new(void *key);
+t_rbtree	*rbt_left_rotate(t_rbtree *x);
+t_rbtree	*rbt_right_rotate(t_rbtree *x);
 
 /*
 ** ANSI Escape Code
