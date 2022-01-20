@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 18:37:45 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:54:46 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,11 @@ void		ft_stack_rotate(t_stack *stack);
 void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
 
+# if DEBUG == 1
+
 void		debug_str_stack(t_stack *stack);
+
+# endif
 
 /*
 ** ANSI Escape Code

@@ -34,6 +34,7 @@ clean:
 
 fclean: clean
 	$(RM) $(RESOLVER) $(CHECKER) $(LIBFT)
+	$(RM) -r *.dSYM
 
 re: fclean all
 

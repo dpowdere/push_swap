@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 09:49:55 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 20:40:52 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:53:47 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void debug(t_dlist *curr, t_dlist *prev, t_dlist *head, t_dlist *tail)
 void	dl_prv_insert_head(t_dlist **curr, t_dlist *head)
 {
 	t_dlist	*tail;
-	t_dlist *prev;
+	t_dlist	*prev;
 
 	if (curr == NULL || head == NULL)
 		return ;
