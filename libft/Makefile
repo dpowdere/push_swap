@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2022/01/18 20:02:29 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/20 17:18:21 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,9 +86,9 @@ CONTENTS := \
 	ft_lstreduce.c \
 	ft_lstsize.c \
 \
-	dl_add_tip.c \
 	dl_clear.c \
 	dl_erase.c \
+	dl_extend.c \
 	dl_insert.c \
 	dl_iter.c \
 	dl_new.c \
