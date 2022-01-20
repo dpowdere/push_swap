@@ -6,90 +6,76 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:13:03 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 18:39:05 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:19:24 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	dl_add_back_head(t_dlist **lst, t_dlist *head)
+void	dl_extend_tail_head(t_dlist **tail1, t_dlist *head2)
 {
-	t_dlist	*back;
+	t_dlist	*tail2;
 
-	if (!lst || !head)
+	if (!tail1 || !head2)
 		return ;
-	back = *lst;
-	while (back && back->next)
-		back = back->next;
-	if (back)
+	tail2 = head2;
+	while (tail2 && tail2->next)
+		tail2 = tail2->next;
+	if (*tail1)
 	{
-		back->next = head;
-		head->prev = back;
+		(*tail1)->next = head2;
+		head2->prev = *tail1;
 	}
-	else
-		*lst = head;
+	*tail1 = tail2;
 }
 
-void	dl_add_back_tail(t_dlist **lst, t_dlist *tail)
+void	dl_extend_tail_tail(t_dlist **tail1, t_dlist *tail2)
 {
-	t_dlist	*back;
-	t_dlist	*head;
+	t_dlist	*head2;
 
-	if (!lst || !tail)
+	if (!tail1 || !tail2)
 		return ;
-	back = *lst;
-	while (back && back->next)
-		back = back->next;
-	head = tail;
-	while (head && head->prev)
-		head = head->prev;
-	if (back)
+	head2 = tail2;
+	while (head2 && head2->prev)
+		head2 = head2->prev;
+	if (*tail1)
 	{
-		back->next = head;
-		head->prev = back;
+		(*tail1)->next = head2;
+		head2->prev = *tail1;
 	}
-	else
-		*lst = head;
+	*tail1 = tail2;
 }
 
-void	dl_add_front_head(t_dlist **lst, t_dlist *head)
+void	dl_extend_head_head(t_dlist **head1, t_dlist *head2)
 {
-	t_dlist	*front;
-	t_dlist	*tail;
+	t_dlist	*tail2;
 
-	if (!lst || !head)
+	if (!head1 || !head2)
 		return ;
-	front = *lst;
-	while (front && front->prev)
-		front = front->prev;
-	tail = head;
-	while (tail && tail->next)
-		tail = tail->next;
-	if (front)
+	tail2 = head2;
+	while (tail2 && tail2->next)
+		tail2 = tail2->next;
+	if (*head1)
 	{
-		front->prev = tail;
-		tail->next = front;
+		(*head1)->prev = tail2;
+		tail2->next = *head1;
 	}
-	*lst = head;
+	*head1 = head2;
 }
 
-void	dl_add_front_tail(t_dlist **lst, t_dlist *tail)
+void	dl_extend_head_tail(t_dlist **head1, t_dlist *tail2)
 {
-	t_dlist	*front;
-	t_dlist	*head;
+	t_dlist	*head2;
 
-	if (!lst || !tail)
+	if (!head1 || !tail2)
 		return ;
-	front = *lst;
-	while (front && front->prev)
-		front = front->prev;
-	head = tail;
-	while (head && head->prev)
-		head = head->prev;
-	if (front)
+	head2 = tail2;
+	while (head2 && head2->prev)
+		head2 = head2->prev;
+	if (*head1)
 	{
-		front->prev = tail;
-		tail->next = front;
+		(*head1)->prev = tail2;
+		tail2->next = *head1;
 	}
-	*lst = head;
+	*head1 = head2;
 }

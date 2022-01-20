@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/20 14:54:46 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:20:31 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,10 +185,10 @@ t_dlist		*dl_new(void *content);
 
 void		*dl_pop(t_dlist **lst);
 
-void		dl_add_back_head(t_dlist **lst, t_dlist *head);
-void		dl_add_back_tail(t_dlist **lst, t_dlist *tail);
-void		dl_add_front_head(t_dlist **lst, t_dlist *head);
-void		dl_add_front_tail(t_dlist **lst, t_dlist *tail);
+void		dl_extend_head_head(t_dlist **head1, t_dlist *head2);
+void		dl_extend_head_tail(t_dlist **head1, t_dlist *tail2);
+void		dl_extend_tail_head(t_dlist **tail1, t_dlist *head2);
+void		dl_extend_tail_tail(t_dlist **tail1, t_dlist *tail2);
 void		dl_erase(t_dlist **current, void (*del)(void *));
 
 void		dl_nxt_clear(t_dlist **lst, void (*del)(void *));
@@ -226,11 +226,7 @@ void		ft_stack_rotate(t_stack *stack);
 void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
 
-# if DEBUG == 1
-
 void		debug_str_stack(t_stack *stack);
-
-# endif
 
 /*
 ** ANSI Escape Code

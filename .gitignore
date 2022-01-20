@@ -4,6 +4,7 @@
 *.exe
 *.o
 *.out
+*.swp
 /push_swap
 /checker
 /checker_*

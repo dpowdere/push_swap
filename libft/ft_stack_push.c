@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:44:27 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/18 17:21:17 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:22:56 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_stack_push(t_stack *stack, void *data)
 	new = dl_new(data);
 	if (!new)
 		return ;
-	dl_add_front_head(&stack->top, new);
+	dl_extend_head_head(&stack->top, new);
 	if (!stack->bottom)
 		stack->bottom = stack->top;
 	++stack->size;
