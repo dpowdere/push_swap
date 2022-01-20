@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/20 16:20:31 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:39:01 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,28 @@ void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
 
 void		debug_str_stack(t_stack *stack);
+
+/*
+** Red-black trees
+** ===============
+*/
+typedef enum e_rbtree_color
+{
+	RBTREE_BLACK,
+	RBTREE_RED
+}			t_rbtree_color;
+
+typedef struct s_rbtree	t_rbtree;
+typedef struct s_rbtree
+{
+	void			*key;
+	t_rbtree_color	color;
+	t_rbtree		*left;
+	t_rbtree		*right;
+	t_rbtree		*parent;
+}			t_rbtree;
+
+t_rbtree	*rbt_new(void *key);
 
 /*
 ** ANSI Escape Code
