@@ -1,5 +1,6 @@
 *.a
 *.d
+*.dSYM
 *.exe
 *.o
 *.out
