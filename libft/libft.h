@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 20:37:00 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:32:47 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,11 @@ int			ft_wctomb_len(wchar_t wc);
 */
 int			*ft_new_int(int n);
 char		*ft_new_str(char const *str);
+
+/*
+** Comparators
+*/
+int			ft_intcmp(void *a, void *b);
 
 /*
 ** Functions to work with linked lists
@@ -246,7 +251,10 @@ typedef struct s_rbtree
 	t_rbtree		*parent;
 }			t_rbtree;
 
+t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key);
 t_rbtree	*rbt_new(void *key);
+
+void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
 void		rbt_left_rotate(t_rbtree **root, t_rbtree *x);
 void		rbt_right_rotate(t_rbtree **root, t_rbtree *x);
 

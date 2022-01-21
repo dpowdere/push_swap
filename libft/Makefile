@@ -23,7 +23,7 @@ CONTENTS := \
 \
 	ft_free_null.c \
 	ft_get_next_line.c ft_get_next_line_utils.c \
-	ft_is_big_endian.c ft_itoa.c ft_jbase.c \
+	ft_intcmp.c ft_is_big_endian.c ft_itoa.c ft_jbase.c \
 	ft_new.c ft_ptrarr_len.c \
 	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
 	ft_split.c ft_split_const.c ft_strjoin.c \
@@ -42,7 +42,7 @@ CONTENTS := \
 	ft_stack_clear.c ft_stack_destroy.c ft_stack_init.c ft_stack_new.c \
 	ft_stack_pop.c ft_stack_push.c ft_stack_rotate.c ft_stack_swap.c \
 \
-	rbt_new.c rbt_rotate.c
+	rbt_find.c rbt_insert.c rbt_new.c rbt_rotate.c
 
 AR := ar
 ARFLAGS := crs
