@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 17:55:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 22:57:16 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:08:34 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,19 @@ int	main(int argc, char *argv[])
 	rbt_insert(&tree, ft_intcmp, ft_new_int(7));
 	rbt_intDebug(tree);
 
-	rbt_right_rotate(&tree, tree->left);
+	rbt_right_rotate(&tree, tree);
+	rbt_intDebug(tree);
+
+	rbt_left_rotate(&tree, tree);
 	rbt_intDebug(tree);
 
 	rbt_insert(&tree, ft_intcmp, ft_new_int(3));
 	rbt_insert(&tree, ft_intcmp, ft_new_int(20));
 	rbt_insert(&tree, ft_intcmp, ft_new_int(17));
 	rbt_intDebug(tree);
+
+	rbt_right_rotate(&tree, tree);
+	rbt_intDebug(tree);
+
 	return (EXIT_SUCCESS);
 }
