@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 22:09:00 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 22:52:40 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:01:25 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	_rbt_insert(t_rbtree *cursor, t_rbtree *new,
 		cursor->left = new;
 	else
 		cursor->right = new;
+	new->parent = cursor;
 }
 
 void	rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key)

@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:38:39 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 22:00:11 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:00:43 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,5 +271,6 @@ void	rbt_intDebug(t_rbtree *t)
 		printf("(This tree is taller than %d, and may be drawn incorrectly.)\n",
 				MAX_HEIGHT);
 	}
+	printf("\n");
 	free_ascii_tree(proot);
 }
