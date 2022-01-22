@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rbt_delete.c                                       :+:      :+:    :+:   */
+/*   rbt_erase.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 13:46:09 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/22 13:46:23 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/22 14:43:27 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/22 14:44:30 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void	_swap_keys(void **a, void **b)
 	*b = tmp;
 }
 
-void	rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *z)
+void	rbt_erase(t_rbtree **root, void (*key_free)(void *), t_rbtree *z)
 {
 	t_rbtree	*x;
 	t_rbtree	*y;
 
-	if (!root || !*root || !z || !delete)
+	if (!root || !*root || !z || !key_free)
 		return ;
 	y = z;
 	if (z->left && z->right)
@@ -46,6 +46,6 @@ void	rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *z)
 		y->parent->right = x;
 	if (y != z)
 		_swap_keys(&z->key, &y->key);
-	delete(y->key);
+	key_free(y->key);
 	free(y);
 }

@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 22:32:47 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/22 14:45:57 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,8 +277,9 @@ t_rbtree	*rbt_next(t_rbtree *node);
 t_rbtree	*rbt_prev(t_rbtree *node);
 t_rbtree	*rbt_new(void *key);
 
+void		rbt_destroy(t_rbtree **root, void (*free)(void *));
+void		rbt_erase(t_rbtree **root, void (*free)(void *), t_rbtree *node);
 void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
-void		rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *node);
 void		rbt_iter_in_order(t_rbtree *root, void (*f)(void *));
 void		rbt_iter_level_order(t_rbtree *root, void (*f)(void *));
 void		rbt_iter_post_order(t_rbtree *root, void (*f)(void *));

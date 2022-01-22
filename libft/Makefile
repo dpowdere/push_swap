@@ -44,7 +44,8 @@ CONTENTS := \
 \
 	ft_queue.c ft_queue_ops.c \
 \
-	rbt_delete.c rbt_find.c rbt_insert.c rbt_iter.c rbt_new.c rbt_rotate.c
+	rbt_destroy.c rbt_erase.c rbt_find.c rbt_insert.c \
+	rbt_iter.c rbt_new.c rbt_rotate.c
 
 AR := ar
 ARFLAGS := crs
