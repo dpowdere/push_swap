@@ -14,22 +14,28 @@
 
 #include "libft.h"
 
+static void	_swap_keys(void **a, void **b)
+{
+	void	*tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 void	rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *z)
 {
 	t_rbtree	*x;
 	t_rbtree	*y;
-	void		*tmp;
 
 	if (!root || !*root || !z || !delete)
 		return ;
-	if (!z->left || !z->right)
-		y = z;
-	else
+	y = z;
+	if (z->left && z->right)
 		y = rbt_next(z);
+	x = y->right;
 	if (y->left)
 		x = y->left;
-	else
-		x = y->right;
 	if (x)
 		x->parent = y->parent;
 	if (!y->parent)
@@ -39,11 +45,7 @@ void	rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *z)
 	else
 		y->parent->right = x;
 	if (y != z)
-	{
-		tmp = z->key;
-		z->key = y->key;
-		y->key = tmp;
-	}
+		_swap_keys(&z->key, &y->key);
 	delete(y->key);
 	free(y);
 }
