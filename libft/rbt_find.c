@@ -30,3 +30,47 @@ t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key)
 	}
 	return (cursor);
 }
+
+t_rbtree	*rbt_max(t_rbtree *node)
+{
+	while (node && node->right)
+		node = node->right;
+	return (node);
+}
+
+t_rbtree	*rbt_min(t_rbtree *node)
+{
+	while (node && node->left)
+		node = node->left;
+	return (node);
+}
+
+t_rbtree	*rbt_next(t_rbtree *x)
+{
+	t_rbtree	*y;
+
+	if (x->right)
+		return (rbt_min(x->right));
+	y = x->parent;
+	while (y && x == y->right)
+	{
+		x = y;
+		y = y->parent;
+	}
+	return (y);
+}
+
+t_rbtree	*rbt_prev(t_rbtree *x)
+{
+	t_rbtree	*y;
+
+	if (x->left)
+		return (rbt_max(x->left));
+	y = x->parent;
+	while (y && x == y->left)
+	{
+		x = y;
+		y = y->parent;
+	}
+	return (y);
+}

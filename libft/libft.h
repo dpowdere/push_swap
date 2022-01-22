@@ -271,6 +271,10 @@ typedef struct s_rbtree
 }			t_rbtree;
 
 t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key);
+t_rbtree	*rbt_max(t_rbtree *root);
+t_rbtree	*rbt_min(t_rbtree *root);
+t_rbtree	*rbt_next(t_rbtree *node);
+t_rbtree	*rbt_prev(t_rbtree *node);
 t_rbtree	*rbt_new(void *key);
 
 void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
