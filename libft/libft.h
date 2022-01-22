@@ -278,6 +278,7 @@ t_rbtree	*rbt_prev(t_rbtree *node);
 t_rbtree	*rbt_new(void *key);
 
 void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
+void		rbt_delete(t_rbtree **root, void (*delete)(void *), t_rbtree *node);
 void		rbt_iter_in_order(t_rbtree *root, void (*f)(void *));
 void		rbt_iter_level_order(t_rbtree *root, void (*f)(void *));
 void		rbt_iter_post_order(t_rbtree *root, void (*f)(void *));

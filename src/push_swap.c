@@ -85,5 +85,17 @@ int	main(int argc, char *argv[])
 	tmp = rbt_next(tmp);
 	assert(tmp && *(int *)tmp->key == 20);
 
+	rbt_delete(&tree, free, tree->right);
+	rbt_intDebug(tree);
+
+	rbt_delete(&tree, free, tree->left);
+	rbt_intDebug(tree);
+
+	rbt_delete(&tree, free, tree->right);
+	rbt_intDebug(tree);
+
+	rbt_delete(&tree, free, tree);
+	rbt_intDebug(tree);
+
 	return (EXIT_SUCCESS);
 }
