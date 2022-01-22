@@ -42,7 +42,9 @@ CONTENTS := \
 	ft_stack_clear.c ft_stack_destroy.c ft_stack_init.c ft_stack_new.c \
 	ft_stack_pop.c ft_stack_push.c ft_stack_rotate.c ft_stack_swap.c \
 \
-	rbt_find.c rbt_insert.c rbt_new.c rbt_rotate.c
+	ft_queue.c ft_queue_ops.c \
+\
+	rbt_find.c rbt_insert.c rbt_iter.c rbt_new.c rbt_rotate.c
 
 AR := ar
 ARFLAGS := crs

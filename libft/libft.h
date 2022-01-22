@@ -232,6 +232,25 @@ void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
 
 /*
+** Queue
+** =====
+*/
+typedef struct s_queue
+{
+	t_dlist	*in;
+	t_dlist	*out;
+	int		size;
+}			t_queue;
+
+t_queue		*ft_q_new(void);
+void		ft_q_init(t_queue *queue);
+void		ft_q_clear(t_queue *queue, void (*f)(void *));
+void		ft_q_destroy(t_queue **queue, void (*f)(void *));
+
+void		ft_q_en(t_queue *queue, void *data);
+void		*ft_q_de(t_queue *queue);
+
+/*
 ** Red-black trees
 ** ===============
 */
@@ -255,6 +274,10 @@ t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key);
 t_rbtree	*rbt_new(void *key);
 
 void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
+void		rbt_iter_in_order(t_rbtree *root, void (*f)(void *));
+void		rbt_iter_level_order(t_rbtree *root, void (*f)(void *));
+void		rbt_iter_post_order(t_rbtree *root, void (*f)(void *));
+void		rbt_iter_pre_order(t_rbtree *root, void (*f)(void *));
 void		rbt_left_rotate(t_rbtree **root, t_rbtree *x);
 void		rbt_right_rotate(t_rbtree **root, t_rbtree *x);
 

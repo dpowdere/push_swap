@@ -6,14 +6,20 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 17:55:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 23:08:34 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/22 10:34:43 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <assert.h>
+#include <stdio.h>
 #include <libftdbg.h>
 
 #include "push_swap.h"
+
+void	print(void *x)
+{
+	printf("%d ", *(int *)x);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -44,6 +50,22 @@ int	main(int argc, char *argv[])
 
 	rbt_right_rotate(&tree, tree);
 	rbt_intDebug(tree);
+
+	printf("in order: ");
+	rbt_iter_in_order(tree, print);
+	printf("\n");
+
+	printf("pre order: ");
+	rbt_iter_pre_order(tree, print);
+	printf("\n");
+
+	printf("post order: ");
+	rbt_iter_post_order(tree, print);
+	printf("\n");
+
+	printf("level order: ");
+	rbt_iter_level_order(tree, print);
+	printf("\n");
 
 	return (EXIT_SUCCESS);
 }
