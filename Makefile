@@ -2,7 +2,10 @@ NAME := push_swap
 RESOLVER := $(NAME)
 CHECKER := checker
 
-SRCS := push_swap.c
+SRCS := \
+	push_swap.c \
+	check_args.c \
+	config.c
 
 SRC := src
 INC := inc

@@ -277,7 +277,7 @@ t_rbtree	*rbt_next(t_rbtree *node);
 t_rbtree	*rbt_prev(t_rbtree *node);
 t_rbtree	*rbt_new(void *key);
 
-void		rbt_destroy(t_rbtree **root, void (*free)(void *));
+void		rbt_clear(t_rbtree **root, void (*free)(void *));
 void		rbt_erase(t_rbtree **root, void (*free)(void *), t_rbtree *node);
 void		rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key);
 void		rbt_iter_in_order(t_rbtree *root, void (*f)(void *));

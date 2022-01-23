@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rbt_destroy.c                                      :+:      :+:    :+:   */
+/*   rbt_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 
 #include "libft.h"
 
-void	rbt_destroy(t_rbtree **root, void (*key_free)(void *))
+void	rbt_clear(t_rbtree **root, void (*key_free)(void *))
 {
 	t_rbtree	*cursor;
 	t_rbtree	*tmp;
