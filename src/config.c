@@ -21,6 +21,25 @@ void	fake_free(void *p)
 	(void)p;
 }
 
+static t_cmd	*ps_cmds_init(void)
+{
+	static t_cmd	cmds[PSCMD_TERMINATOR] = {
+	{PSCMD_PA, "pa", cmd_push_a},
+	{PSCMD_PB, "pb", cmd_push_b},
+	{PSCMD_SA, "sa", cmd_swap_a},
+	{PSCMD_SB, "sb", cmd_swap_b},
+	{PSCMD_SS, "ss", cmd_swap_both},
+	{PSCMD_RA, "ra", cmd_rotate_a},
+	{PSCMD_RB, "rb", cmd_rotate_b},
+	{PSCMD_RR, "rr", cmd_rotate_both},
+	{PSCMD_RRA, "rra", cmd_reverse_rotate_a},
+	{PSCMD_RRB, "rrb", cmd_reverse_rotate_b},
+	{PSCMD_RRR, "rrr", cmd_reverse_rotate_both}
+	};
+
+	return (cmds);
+}
+
 t_config	*ps_config_init(void)
 {
 	t_config	*c;
@@ -34,6 +53,7 @@ t_config	*ps_config_init(void)
 	c->a = ft_stack_new();
 	c->b = ft_stack_new();
 	c->tree = NULL;
+	c->cmds = ps_cmds_init();
 	return (c);
 }
 

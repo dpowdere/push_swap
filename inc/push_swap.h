@@ -18,11 +18,35 @@
 
 # include <libft.h>
 
+enum e_cmd
+{
+	PSCMD_PA,
+	PSCMD_PB,
+	PSCMD_SA,
+	PSCMD_SB,
+	PSCMD_SS,
+	PSCMD_RA,
+	PSCMD_RB,
+	PSCMD_RR,
+	PSCMD_RRA,
+	PSCMD_RRB,
+	PSCMD_RRR,
+	PSCMD_TERMINATOR
+};
+
+typedef struct s_cmd
+{
+	enum e_cmd	id;
+	char const	*name;
+	void		(*cmd)(t_stack *, t_stack *);
+}			t_cmd;
+
 typedef struct s_config
 {
 	t_stack		*a;
 	t_stack		*b;
 	t_rbtree	*tree;
+	t_cmd		*cmds;
 }			t_config;
 
 void		fake_free(void *p);
