@@ -13,6 +13,7 @@
 #include <errno.h>
 #include <stddef.h>
 #include <libft.h>
+#include <libftdbg.h>
 #include "push_swap.h"
 
 #define WHITESPACE_CHARS	" \t\n\r\v\f"
@@ -44,15 +45,18 @@ void	ps_populate_a(t_config *c)
 {
 	int	*number;
 
-	number = ft_stack_pop(c->b);
-	if (rbt_find(c->tree, ft_intcmp, number) != NULL)
+	while (c->b->top)
 	{
-		ps_config_free(c);
-		ft_eprintln("Error");
-		exit(EXIT_FAILURE);
+		number = ft_stack_pop(c->b);
+		if (rbt_find(c->tree, ft_intcmp, number) != NULL)
+		{
+			ps_config_free(c);
+			ft_eprintln("Error");
+			exit(EXIT_FAILURE);
+		}
+		rbt_insert(&c->tree, ft_intcmp, number);
+		ft_stack_push(c->a, number);
 	}
-	rbt_insert(&c->tree, ft_intcmp, number);
-	ft_stack_push(c->a, number);
 }
 
 void	ps_check_args(int argc, char **argv)
@@ -75,5 +79,9 @@ void	ps_check_args(int argc, char **argv)
 		free((void *)list);
 		ps_populate_a(c);
 	}
+	//
+	ft_stack_intDebug(c->a);
+	rbt_intDebug(c->tree);
+	//
 	ps_config_free(c);
 }

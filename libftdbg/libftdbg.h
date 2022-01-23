@@ -15,6 +15,7 @@
 # include <libft.h>
 
 void	ft_stack_strDebug(t_stack *stack);
+void	ft_stack_intDebug(t_stack *stack);
 void	rbt_intDebug(t_rbtree *root);
 
 #endif
