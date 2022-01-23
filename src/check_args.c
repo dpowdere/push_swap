@@ -64,6 +64,13 @@ void	ps_check_args(int argc, char **argv)
 	while (argc-- > 1)
 	{
 		list = ft_split_const(argv[argc], WHITESPACE_CHARS);
+		if (!list || !list[0])
+		{
+			free((void *)list);
+			ps_config_free(c);
+			ft_eprintln("Error");
+			exit(EXIT_FAILURE);
+		}
 		ps_populate_b(c, list);
 		free((void *)list);
 		ps_populate_a(c);

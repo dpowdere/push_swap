@@ -6,10 +6,11 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 22:18:28 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 22:26:16 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:55:30 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include "libft.h"
 
 t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key)
@@ -17,6 +18,8 @@ t_rbtree	*rbt_find(t_rbtree *root, int (*cmp)(void *, void *), void *key)
 	t_rbtree	*cursor;
 	int			order;
 
+	if (!root || !cmp || !key)
+		return (NULL);
 	cursor = root;
 	while (cursor)
 	{

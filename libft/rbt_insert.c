@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 22:09:00 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/21 23:01:25 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:58:20 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	rbt_insert(t_rbtree **root, int (*cmp)(void *, void *), void *key)
 {
 	t_rbtree	*new;
 
-	if (!root)
+	if (!root || !cmp || !key)
 		return ;
 	new = rbt_new(key);
 	if (!new)

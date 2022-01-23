@@ -39,8 +39,8 @@ t_config	*ps_config_init(void)
 
 void	ps_config_free(t_config *c)
 {
+	rbt_clear(&c->tree, fake_free);
 	ft_stack_destroy(&c->a, free);
 	ft_stack_destroy(&c->b, free);
-	rbt_clear(&c->tree, fake_free);
 	free(c);
 }

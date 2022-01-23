@@ -2,10 +2,8 @@ NAME := push_swap
 RESOLVER := $(NAME)
 CHECKER := checker
 
-SRCS := \
-	push_swap.c \
-	check_args.c \
-	config.c
+RESOLVER_SRCS := push_swap.c check_args.c config.c
+CHECKER_SRCS := checker.c check_args.c config.c
 
 SRC := src
 INC := inc
@@ -15,8 +13,10 @@ LIB := libft
 LIBFT := $(LIB)/$(LIB).a
 LIBFT_OBJS := $(addprefix $(LIB)/, $(shell $(MAKE) -sC $(LIB) objls))
 
-OBJS := $(addprefix $(OBJ)/, $(SRCS:.c=.o))
-DEPS := $(OBJS:.o=.d)
+RESOLVER_OBJS := $(addprefix $(OBJ)/, $(RESOLVER_SRCS:.c=.o))
+RESOLVER_DEPS := $(RESOLVER_OBJS:.o=.d)
+CHECKER_OBJS := $(addprefix $(OBJ)/, $(CHECKER_SRCS:.c=.o))
+CHECKER_DEPS := $(CHECKER_OBJS:.o=.d)
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror
@@ -50,7 +50,9 @@ fclean: clean
 
 re: fclean all
 
-$(OBJS): | $(OBJ)
+$(RESOLVER_OBJS): | $(OBJ)
+
+$(CHECKER_OBJS): | $(OBJ)
 
 $(OBJ)/%.o: $(SRC)/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
@@ -64,11 +66,12 @@ $(LIB)/%.o: $(LIB)/%.c
 $(LIBDBG)/%.o: $(LIBDBG)/%.c
 	$(MAKE) -C $(LIBDBG) --no-print-directory
 
-$(RESOLVER): $(OBJS) $(LIBFT_OBJS)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+$(RESOLVER): $(RESOLVER_OBJS) $(LIBFT_OBJS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(RESOLVER_OBJS) $(LDLIBS)
 
-$(CHECKER):
+$(CHECKER): $(CHECKER_OBJS) $(LIBFT_OBJS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(CHECKER_OBJS) $(LDLIBS)
 
 .PHONY: all bonus clean fclean re
 
--include $(DEPS)
+-include $(RESOLVER_DEPS) $(CHECKER_DEPS)

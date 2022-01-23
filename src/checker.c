@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intcmp.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 22:28:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 14:52:57 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/23 14:41:14 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/23 14:42:11 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_intcmp(void *a, void *b)
-{
-	int	x;
-	int	y;
+#include "push_swap.h"
 
-	x = *(int *)a;
-	y = *(int *)b;
-	if (x < y)
-		return (-1);
-	else if (x > y)
-		return (1);
-	return (0);
+int	main(int argc, char **argv)
+{
+	ps_check_args(argc, argv);
+	return (EXIT_SUCCESS);
 }
