@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   dl_reduce.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 17:55:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/22 13:26:58 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/23 23:11:25 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/23 23:12:49 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "../src/debug.c"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*dl_nxt_reduce(t_dlist *lst, void *initial, void *(*f)(void *, void *))
 {
-	t_config	*c;
+	while (lst)
+	{
+		initial = f(initial, lst->content);
+		lst = lst->next;
+	}
+	return (initial);
+}
 
-	debug();
-	c = ps_check_args(argc, argv);
-	// resolve cmd sequence
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+void	*dl_prv_reduce(t_dlist *lst, void *initial, void *(*f)(void *, void *))
+{
+	while (lst)
+	{
+		initial = f(initial, lst->content);
+		lst = lst->prev;
+	}
+	return (initial);
 }

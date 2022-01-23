@@ -13,12 +13,39 @@
 #include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <libft.h>
 
 #include "push_swap.h"
 
 void	fake_free(void *p)
 {
 	(void)p;
+}
+
+static int	read_cmd(t_cmd *cmds, t_cmd **cmd, int *eof)
+{
+	char	*line;
+	int		ret;
+	int		i;
+
+	line = NULL;
+	ret = ft_get_next_line(STDIN_FILENO, &line);
+	if (ret == 1)
+	{
+		i = 0;
+		while (i < PSCMD_TERMINATOR)
+		{
+			if (ft_strcmp(line, cmds[i].name) == 0)
+			{
+				*cmd = &cmds[i];
+				break ;
+			}
+			++i;
+		}
+	}
+	*eof = ret == 0;
+	free(line);
+	return (ret);
 }
 
 static t_cmd	*ps_cmds_init(void)
@@ -54,6 +81,7 @@ t_config	*ps_config_init(void)
 	c->b = ft_stack_new();
 	c->tree = NULL;
 	c->cmds = ps_cmds_init();
+	c->read = read_cmd;
 	return (c);
 }
 

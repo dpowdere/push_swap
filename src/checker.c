@@ -14,6 +14,19 @@
 
 int	main(int argc, char **argv)
 {
-	ps_check_args(argc, argv);
+	t_config	*c;
+	t_cmd		*cmd;
+	int			eof;
+
+	c = ps_check_args(argc, argv);
+	cmd = NULL;
+	eof = 0;
+	while (c->read(c->cmds, &cmd, &eof) && cmd && !eof)
+		cmd->cmd(c->a, c->b);
+	if (!eof)
+		ft_eprintln("Error");
+	else
+		ps_check_result(c);
+	ps_config_free(c);
 	return (EXIT_SUCCESS);
 }

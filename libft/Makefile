@@ -37,7 +37,7 @@ CONTENTS := \
 	ft_lstpopreduce.c ft_lstreduce.c ft_lstsize.c \
 \
 	dl_clear.c dl_erase.c dl_extend.c dl_insert.c dl_iter.c \
-	dl_new.c dl_pop.c dl_size.c dl_tip.c \
+	dl_new.c dl_pop.c dl_reduce.c dl_size.c dl_tip.c \
 \
 	ft_stack_clear.c ft_stack_destroy.c ft_stack_init.c ft_stack_new.c \
 	ft_stack_pop.c ft_stack_push.c ft_stack_rotate.c ft_stack_swap.c \

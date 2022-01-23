@@ -59,7 +59,7 @@ void	ps_populate_a(t_config *c)
 	}
 }
 
-void	ps_check_args(int argc, char **argv)
+t_config	*ps_check_args(int argc, char **argv)
 {
 	t_config	*c;
 	char *const	*list;
@@ -83,5 +83,5 @@ void	ps_check_args(int argc, char **argv)
 	ft_stack_intDebug(c->a);
 	rbt_intDebug(c->tree);
 	//
-	ps_config_free(c);
+	return (c);
 }

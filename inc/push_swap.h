@@ -47,12 +47,14 @@ typedef struct s_config
 	t_stack		*b;
 	t_rbtree	*tree;
 	t_cmd		*cmds;
+	int			(*read)(t_cmd *cmds, t_cmd **cmd, int * eof);
 }			t_config;
 
 void		fake_free(void *p);
-void		ps_check_args(int argc, char **argv);
-t_config	*ps_config_init(void);
+t_config	*ps_check_args(int argc, char **argv);
+void		ps_check_result(t_config *c);
 void		ps_config_free(t_config *c);
+t_config	*ps_config_init(void);
 
 void		cmd_push_a(t_stack *a, t_stack *b);
 void		cmd_push_b(t_stack *a, t_stack *b);

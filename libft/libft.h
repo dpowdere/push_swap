@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/22 14:45:57 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/23 23:13:34 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,12 +201,14 @@ void		dl_nxt_insert_head(t_dlist **curr, t_dlist *head);
 void		dl_nxt_insert_tail(t_dlist **curr, t_dlist *tail);
 void		dl_nxt_iter(t_dlist *e, void (*f)(void *));
 void		dl_nxt_iter_ix(t_dlist *e, void (*f)(void *, int ix, int is_last));
+void		*dl_nxt_reduce(t_dlist *lst, void *ini, void *(*f)(void *, void *));
 
 void		dl_prv_clear(t_dlist **lst, void (*del)(void *));
 void		dl_prv_insert_head(t_dlist **curr, t_dlist *head);
 void		dl_prv_insert_tail(t_dlist **curr, t_dlist *tail);
 void		dl_prv_iter(t_dlist *lst, void (*f)(void *));
 void		dl_prv_iter_ix(t_dlist *lst, void (*f)(void *, int ix, int is_1st));
+void		*dl_prv_reduce(t_dlist *lst, void *ini, void *(*f)(void *, void *));
 
 /*
 ** Stack
