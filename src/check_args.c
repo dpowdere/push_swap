@@ -79,9 +79,5 @@ t_config	*ps_check_args(int argc, char **argv)
 		free((void *)list);
 		ps_populate_a(c);
 	}
-	//
-	ft_stack_intDebug(c->a);
-	rbt_intDebug(c->tree);
-	//
 	return (c);
 }

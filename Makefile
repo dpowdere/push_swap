@@ -3,6 +3,7 @@ RESOLVER := $(NAME)
 CHECKER := checker
 
 RESOLVER_SRCS := push_swap.c check_args.c config.c \
+	resolve_cmds.c print_cmds.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c
 CHECKER_SRCS := checker.c check_args.c check_result.c config.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c
@@ -21,7 +22,7 @@ CHECKER_OBJS := $(addprefix $(OBJ)/, $(CHECKER_SRCS:.c=.o))
 CHECKER_DEPS := $(CHECKER_OBJS:.o=.d)
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -std=c89
 CPPFLAGS	:= -I$(INC) -I$(LIB) -MMD -MP
 LDFLAGS		:= -L$(LIB)
 LDLIBS		:= -lft

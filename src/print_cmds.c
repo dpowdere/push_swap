@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   print_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:41:14 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 14:42:11 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/28 06:25:34 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/28 06:26:03 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include <libft.h>
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ps_print_cmds(t_config *c)
 {
-	t_config	*c;
-	t_cmd		*cmd;
-	int			eof;
+	enum e_cmd	*cmd;
 
-	c = ps_check_args(argc, argv);
-	cmd = NULL;
-	eof = 0;
-	while (c->read(c->cmds, &cmd, &eof) && cmd && !eof)
-		cmd->cmd(c->a, c->b);
-	if (!eof)
-		ft_eprintln("Error");
-	else
-		ps_check_result(c);
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+	ft_lstreverse(&c->resolved_cmds);
+	cmd = ft_lstpop(&c->resolved_cmds);
+	while (cmd)
+	{
+		ft_print(c->cmds[*cmd].name);
+		cmd = ft_lstpop(&c->resolved_cmds);
+	}
 }

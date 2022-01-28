@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
-#include "../src/debug.c"
 
 int	main(int argc, char *argv[])
 {
 	t_config	*c;
 
-	debug();
 	c = ps_check_args(argc, argv);
-	// resolve cmd sequence
+	ps_resolve_cmds(c);
+	ps_print_cmds(c);
 	ps_config_free(c);
 	return (EXIT_SUCCESS);
 }

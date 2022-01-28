@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_lstreverse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:41:14 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 14:42:11 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/28 07:15:39 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/28 08:02:14 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstreverse(t_list **lst)
 {
-	t_config	*c;
-	t_cmd		*cmd;
-	int			eof;
+	t_list	*prv;
+	t_list	*cur;
+	t_list	*nxt;
 
-	c = ps_check_args(argc, argv);
-	cmd = NULL;
-	eof = 0;
-	while (c->read(c->cmds, &cmd, &eof) && cmd && !eof)
-		cmd->cmd(c->a, c->b);
-	if (!eof)
-		ft_eprintln("Error");
-	else
-		ps_check_result(c);
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+	if (!lst || !*lst || !(*lst)->next)
+		return ;
+	prv = NULL;
+	cur = *lst;
+	while (cur)
+	{
+		nxt = cur->next;
+		cur->next = prv;
+		prv = cur;
+		cur = nxt;
+	}
+	if (prv)
+		*lst = prv;
 }

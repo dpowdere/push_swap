@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/inc",
+                "${workspaceFolder}/libft",
+                "${workspaceFolder}/libftdbg"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c89",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerArgs": [
+                "-Wall -Wextra -Werror -std=c89"
+            ]
+        }
+    ],
+    "version": 4
+}

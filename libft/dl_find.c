@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   dl_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:41:14 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 14:42:11 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/28 08:33:33 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/28 08:43:43 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int		dl_nxt_find(t_dlist *lst, void *data)
 {
-	t_config	*c;
-	t_cmd		*cmd;
-	int			eof;
+	int	ix;
 
-	c = ps_check_args(argc, argv);
-	cmd = NULL;
-	eof = 0;
-	while (c->read(c->cmds, &cmd, &eof) && cmd && !eof)
-		cmd->cmd(c->a, c->b);
-	if (!eof)
-		ft_eprintln("Error");
-	else
-		ps_check_result(c);
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+	ix = 0;
+	while (lst)
+	{
+		if (lst->content == data)
+			return (ix);
+		lst = lst->next;
+		++ix;
+	}
+	return (-1);
+}
+
+int		dl_prv_find(t_dlist *lst, void *data)
+{
+	int	ix;
+
+	ix = 0;
+	while (lst)
+	{
+		if (lst->content == data)
+			return (ix);
+		lst = lst->prev;
+		++ix;
+	}
+	return (-1);
 }

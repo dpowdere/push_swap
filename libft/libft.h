@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 23:13:34 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/28 08:36:33 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ void		ft_lstiter_ix(t_list *lst, void (*f)(void *, int ix, int is_last));
 void		ft_lstpipeline(t_list **lst, t_list *(*pipeline)(t_list *));
 void		ft_lstpipeline_xd(t_list **lst,
 				t_list *(*pipeline)(t_list *, void *), void *extra_data);
+void		ft_lstreverse(t_list **lst);
 void		ft_lststream(t_list **lst, t_list *(*stream_process)(t_list **));
 void		ft_lststream_xd(t_list **lst,
 				t_list *(*stream_process)(t_list **, void *), void *extra_data);
@@ -181,6 +182,8 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 }			t_dlist;
 
+int			dl_nxt_find(t_dlist *lst, void *data);
+int			dl_prv_find(t_dlist *lst, void *data);
 int			dl_nxt_size(t_dlist *lst);
 int			dl_prv_size(t_dlist *lst);
 
@@ -232,6 +235,8 @@ void		ft_stack_push(t_stack *stack, void *data);
 void		ft_stack_rotate(t_stack *stack);
 void		ft_stack_rotate_reverse(t_stack *stack);
 void		ft_stack_swap(t_stack *stack);
+
+int			ft_stack_find(t_stack *stack, void *data);
 
 /*
 ** Queue

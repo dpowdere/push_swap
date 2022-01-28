@@ -1,5 +1,12 @@
 {
-	"files.associations": {
-		"push_swap.h": "c"
-	}
+  "files.associations": {
+    "push_swap.h": "c",
+    "libft.h": "c"
+  },
+  "files.exclude": {
+    "tester": true,
+    "tester_complexity": true,
+    "tester_visualizer": true,
+    "tester.sh": true
+  }
 }

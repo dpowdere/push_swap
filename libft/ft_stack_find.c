@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_stack_find.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:41:14 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 14:42:11 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/28 08:29:51 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/28 08:40:25 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int		ft_stack_find(t_stack *stack, void *data)
 {
-	t_config	*c;
-	t_cmd		*cmd;
-	int			eof;
-
-	c = ps_check_args(argc, argv);
-	cmd = NULL;
-	eof = 0;
-	while (c->read(c->cmds, &cmd, &eof) && cmd && !eof)
-		cmd->cmd(c->a, c->b);
-	if (!eof)
-		ft_eprintln("Error");
-	else
-		ps_check_result(c);
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+	return (dl_nxt_find(stack->top, data));
 }

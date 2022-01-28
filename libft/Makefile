@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2022/01/20 17:46:56 by dpowdere         ###   ########.fr        #
+#    Updated: 2022/01/28 08:33:19 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,14 @@ CONTENTS := \
 	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstconv.c \
 	ft_lstdelone.c ft_lstdetach.c ft_lstinsert.c ft_lstiter.c ft_lstlast.c \
 	ft_lstmap.c ft_lstnew.c ft_lstpipeline.c ft_lstpop.c ft_lstpopconv.c \
-	ft_lstpopreduce.c ft_lstreduce.c ft_lstsize.c \
+	ft_lstpopreduce.c ft_lstreduce.c ft_lstreverse.c ft_lstsize.c \
 \
-	dl_clear.c dl_erase.c dl_extend.c dl_insert.c dl_iter.c \
+	dl_clear.c dl_erase.c dl_extend.c dl_find.c dl_insert.c dl_iter.c \
 	dl_new.c dl_pop.c dl_reduce.c dl_size.c dl_tip.c \
 \
-	ft_stack_clear.c ft_stack_destroy.c ft_stack_init.c ft_stack_new.c \
-	ft_stack_pop.c ft_stack_push.c ft_stack_rotate.c ft_stack_swap.c \
+	ft_stack_clear.c ft_stack_destroy.c ft_stack_init.c ft_stack_find.c \
+	ft_stack_new.c ft_stack_pop.c ft_stack_push.c \
+	ft_stack_rotate.c ft_stack_swap.c \
 \
 	ft_queue.c ft_queue_ops.c \
 \
