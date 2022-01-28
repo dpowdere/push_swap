@@ -13,6 +13,12 @@
 #include <libft.h>
 #include "push_swap.h"
 
+static void	resolve_cmd(t_config *c, enum e_cmd cmd)
+{
+	ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(cmd)));
+	c->cmds[cmd].cmd(c->a, c->b);
+}
+
 void	ps_resolve_cmds(t_config *c)
 {
 	enum e_cmd	cmd;
@@ -31,11 +37,11 @@ void	ps_resolve_cmds(t_config *c)
 		else
 			i = c->a->size - i;
 		while (i-- > 0)
-			ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(cmd)));
-		ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(PSCMD_PB)));
+			resolve_cmd(c, cmd);
+		resolve_cmd(c, PSCMD_PB);
 		cur = rbt_next(cur);
 	}
 	i = c->b->size;
 	while (i-- > 0)
-		ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(PSCMD_PA)));
+		resolve_cmd(c, PSCMD_PA);
 }

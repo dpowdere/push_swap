@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <stdlib.h>
 
 #include "libft.h"
@@ -19,6 +20,8 @@ void	*ft_lstpop(t_list **lst)
 	void	*content;
 	t_list	*elem;
 
+	if (!lst || !*lst)
+		return (NULL);
 	elem = *lst;
 	content = elem->content;
 	*lst = elem->next;

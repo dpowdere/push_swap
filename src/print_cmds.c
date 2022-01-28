@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <libft.h>
 #include "push_swap.h"
 
@@ -21,7 +22,8 @@ void	ps_print_cmds(t_config *c)
 	cmd = ft_lstpop(&c->resolved_cmds);
 	while (cmd)
 	{
-		ft_print(c->cmds[*cmd].name);
+		ft_println(c->cmds[*cmd].name);
+		free((void *)cmd);
 		cmd = ft_lstpop(&c->resolved_cmds);
 	}
 }
