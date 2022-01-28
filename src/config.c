@@ -29,6 +29,7 @@ static int	read_cmd(t_cmd *cmds, t_cmd **cmd, int *eof)
 	int		i;
 
 	line = NULL;
+	*cmd = NULL;
 	ret = ft_get_next_line(STDIN_FILENO, &line);
 	if (ret == 1)
 	{
