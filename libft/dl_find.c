@@ -6,13 +6,13 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 08:33:33 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/28 08:43:43 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/28 22:59:26 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		dl_nxt_find(t_dlist *lst, void *data)
+int	dl_nxt_find(t_dlist *lst, void *data)
 {
 	int	ix;
 
@@ -27,7 +27,7 @@ int		dl_nxt_find(t_dlist *lst, void *data)
 	return (-1);
 }
 
-int		dl_prv_find(t_dlist *lst, void *data)
+int	dl_prv_find(t_dlist *lst, void *data)
 {
 	int	ix;
 
