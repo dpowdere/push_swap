@@ -32,7 +32,7 @@ void	ps_resolve_cmds(t_config *c)
 		number = cur->key;
 		i = ft_stack_find(c->a, number);
 		cmd = PSCMD_RRA;
-		if (i < c->a->size / 2)
+		if (i < c->a->size - i)
 			cmd = PSCMD_RA;
 		else
 			i = c->a->size - i;
