@@ -46,6 +46,7 @@ typedef struct s_config
 	t_stack		*a;
 	t_stack		*b;
 	t_rbtree	*tree;
+	t_list		*resolved_cmds;
 	t_cmd		*cmds;
 	int const	size;
 	int			(*read)(t_cmd *cmds, t_cmd **cmd, int *eof);
@@ -57,6 +58,7 @@ void		ps_check_result(t_config *c);
 void		ps_config_free(t_config *c);
 t_config	*ps_config_init(void);
 void		ps_resolve_cmds(t_config *c);
+void		ps_print_cmds(t_config *c);
 
 void		cmd_push_a(t_stack *a, t_stack *b);
 void		cmd_push_b(t_stack *a, t_stack *b);

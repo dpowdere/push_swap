@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/09 17:55:08 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/22 13:26:58 by dpowdere         ###   ########.fr       */
+/*   Created: 2022/01/28 06:25:34 by dpowdere          #+#    #+#             */
+/*   Updated: 2022/01/28 06:26:03 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <libft.h>
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	ps_print_cmds(t_config *c)
 {
-	t_config	*c;
+	enum e_cmd	*cmd;
 
-	c = ps_check_args(argc, argv);
-	ps_resolve_cmds(c);
-	ps_print_cmds(c);
-	ps_config_free(c);
-	return (EXIT_SUCCESS);
+	ft_lstreverse(&c->resolved_cmds);
+	cmd = ft_lstpop(&c->resolved_cmds);
+	while (cmd)
+	{
+		ft_println(c->cmds[*cmd].name);
+		free((void *)cmd);
+		cmd = ft_lstpop(&c->resolved_cmds);
+	}
 }
