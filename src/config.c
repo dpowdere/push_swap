@@ -93,6 +93,6 @@ void	ps_config_free(t_config *c)
 	rbt_clear(&c->tree, fake_free);
 	ft_stack_destroy(&c->a, free);
 	ft_stack_destroy(&c->b, free);
-	ft_lstclear(&c->resolved_cmds, free);
+	dl_nxt_clear(&c->resolved_cmds, free);
 	free(c);
 }

@@ -15,7 +15,10 @@
 
 static void	resolve_cmd(t_config *c, enum e_cmd cmd)
 {
-	ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(cmd)));
+	t_dlist	*elem;
+
+	elem = dl_new(ft_new_int(cmd));
+	dl_extend_head_head(&c->resolved_cmds, elem);
 	c->cmds[cmd].cmd(c->a, c->b);
 }
 

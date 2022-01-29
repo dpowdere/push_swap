@@ -20,7 +20,7 @@ t_dlist	*dl_new(void *content)
 	t_dlist	*elem;
 
 	elem = (t_dlist *)malloc(sizeof(t_dlist));
-	if (!elem)
+	if (elem == NULL)
 		return (NULL);
 	elem->content = content;
 	elem->next = NULL;

@@ -8,7 +8,52 @@ static void	print(void *x)
 	printf("%d ", *(int *)x);
 }
 
-void debug(void)
+void	debug_dlist(void)
+{
+	t_dlist	*dl;
+
+	dl = dl_new(ft_new_int(234));
+	dl_extend_head_head(&dl, dl_new(ft_new_int(5)));
+	dl_extend_head_head(&dl, dl_new(ft_new_int(-33)));
+	dl_extend_head_head(&dl, dl_new(ft_new_int(10)));
+	dl_extend_head_head(&dl, dl_new(ft_new_int(17)));
+	dl_extend_head_head(&dl, dl_new(ft_new_int(0)));
+	dl_intDebug(dl);
+
+	dl_nxt_reverse(&dl);
+	dl_intDebug(dl);
+
+	free(dl_pop(&dl->next->next));
+	dl_intDebug(dl);
+
+	free(dl_pop(&dl->next));
+	dl_intDebug(dl);
+
+	dl_nxt_clear(&dl, free);
+}
+
+void	debug_stack(void)
+{
+	t_stack	*s;
+	t_dlist	*dl;
+
+	s = ft_stack_new();
+	ft_stack_push(s, ft_new_int(5));
+	ft_stack_push(s, ft_new_int(-33));
+	ft_stack_push(s, ft_new_int(10));
+	ft_stack_push(s, ft_new_int(17));
+	ft_stack_push(s, ft_new_int(0));
+	ft_stack_intDebug(s);
+
+	dl = s->top;
+	dl_nxt_reverse(&s->top);
+	s->bottom = dl;
+	ft_stack_intDebug(s);
+
+	ft_stack_destroy(&s, free);
+}
+
+void debug_tree(void)
 {
 	t_rbtree	*tree;
 	t_rbtree	*tmp;

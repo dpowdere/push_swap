@@ -12,8 +12,9 @@
 
 LIBNAME := libftdbg
 CONTENTS := \
+  debug_dlist.c \
   debug_int_rbtree.c \
-  debug_str_stack.c
+  debug_stack.c
 
 AR := ar
 ARFLAGS := crs

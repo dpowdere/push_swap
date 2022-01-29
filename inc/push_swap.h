@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 17:53:35 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/23 21:45:09 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/01/29 19:08:51 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_config
 	t_stack		*a;
 	t_stack		*b;
 	t_rbtree	*tree;
-	t_list		*resolved_cmds;
+	t_dlist		*resolved_cmds;
 	t_cmd		*cmds;
 	int const	size;
 	int			(*read)(t_cmd *cmds, t_cmd **cmd, int *eof);
@@ -57,8 +57,10 @@ t_config	*ps_check_args(int argc, char **argv);
 void		ps_check_result(t_config *c);
 void		ps_config_free(t_config *c);
 t_config	*ps_config_init(void);
+void		ps_optimize_cmds(t_config *c);
 void		ps_resolve_cmds(t_config *c);
 void		ps_print_cmds(t_config *c);
+void		ps_print_cmds_debug(t_config *c);
 
 void		cmd_push_a(t_stack *a, t_stack *b);
 void		cmd_push_b(t_stack *a, t_stack *b);
