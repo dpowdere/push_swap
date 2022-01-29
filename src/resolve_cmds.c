@@ -50,7 +50,7 @@ static int	find_sorted_position_in_rotated_sorted_stack(
 	{
 		curr = stack->bottom;
 		ix = stack->size;
-		while (*(int *)curr->content < *(int *)prev->content
+		while (curr && *(int *)curr->content < *(int *)prev->content
 			&& *(int *)elem->content < *(int *)curr->content)
 		{
 			--ix;
@@ -62,7 +62,7 @@ static int	find_sorted_position_in_rotated_sorted_stack(
 	{
 		curr = stack->top->next;
 		ix = 1;
-		while (*(int *)curr->content > *(int *)prev->content
+		while (curr && *(int *)curr->content > *(int *)prev->content
 			&& *(int *)elem->content > *(int *)curr->content)
 		{
 			++ix;
