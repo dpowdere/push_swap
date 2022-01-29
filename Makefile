@@ -2,8 +2,7 @@ NAME := push_swap
 RESOLVER := $(NAME)
 CHECKER := checker
 
-RESOLVER_SRCS := push_swap.c check_args.c config.c \
-	resolve_cmds.c print_cmds.c \
+RESOLVER_SRCS := push_swap.c check_args.c config.c resolve_cmds.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c
 CHECKER_SRCS := checker.c check_args.c check_result.c config.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c

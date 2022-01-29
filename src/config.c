@@ -81,7 +81,6 @@ t_config	*ps_config_init(void)
 	c->a = ft_stack_new();
 	c->b = ft_stack_new();
 	c->tree = NULL;
-	c->resolved_cmds = NULL;
 	c->cmds = ps_cmds_init();
 	c->read = read_cmd;
 	*(int *)&c->size = 0;
@@ -93,6 +92,5 @@ void	ps_config_free(t_config *c)
 	rbt_clear(&c->tree, fake_free);
 	ft_stack_destroy(&c->a, free);
 	ft_stack_destroy(&c->b, free);
-	ft_lstclear(&c->resolved_cmds, free);
 	free(c);
 }

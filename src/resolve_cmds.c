@@ -15,8 +15,11 @@
 
 static void	resolve_cmd(t_config *c, enum e_cmd cmd)
 {
-	ft_lstadd_front(&c->resolved_cmds, ft_lstnew(ft_new_int(cmd)));
-	c->cmds[cmd].cmd(c->a, c->b);
+	t_cmd	*command;
+
+	command = &c->cmds[cmd];
+	ft_println(command->name);
+	command->cmd(c->a, c->b);
 }
 
 static void	sort_triplet(t_config *c)

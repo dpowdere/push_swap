@@ -19,7 +19,6 @@ int	main(int argc, char *argv[])
 
 	c = ps_check_args(argc, argv);
 	ps_resolve_cmds(c);
-	ps_print_cmds(c);
 	ps_config_free(c);
 	return (EXIT_SUCCESS);
 }
