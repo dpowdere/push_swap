@@ -48,6 +48,7 @@ typedef struct s_config
 	t_rbtree	*tree;
 	t_list		*resolved_cmds;
 	t_cmd		*cmds;
+	int const	size;
 	int			(*read)(t_cmd *cmds, t_cmd **cmd, int *eof);
 }			t_config;
 

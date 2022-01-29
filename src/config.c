@@ -84,6 +84,7 @@ t_config	*ps_config_init(void)
 	c->resolved_cmds = NULL;
 	c->cmds = ps_cmds_init();
 	c->read = read_cmd;
+	*(int *)&c->size = 0;
 	return (c);
 }
 
