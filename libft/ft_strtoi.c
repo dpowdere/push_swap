@@ -50,6 +50,12 @@ static int	_strtoi(const char **nptr, int sign, int base)
 	return (n);
 }
 
+static inline int	_invalid(void)
+{
+	errno = EINVAL;
+	return (0);
+}
+
 int	ft_strtoi(const char *nptr, char **endptr, int base)
 {
 	int	sign;
@@ -57,10 +63,7 @@ int	ft_strtoi(const char *nptr, char **endptr, int base)
 
 	sign = 1;
 	if (base < 1 || base > DIGITS_N)
-	{
-		errno = EINVAL;
-		return (0);
-	}
+		return (_invalid());
 	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r'))
 		++nptr;
 	if (*nptr == '+' || *nptr == '-')
@@ -69,6 +72,8 @@ int	ft_strtoi(const char *nptr, char **endptr, int base)
 			sign = -1;
 		++nptr;
 	}
+	if (*nptr == '\0')
+		return (_invalid());
 	n = _strtoi(&nptr, sign, base);
 	if (endptr != NULL)
 		*endptr = (char *)nptr;
