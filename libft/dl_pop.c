@@ -25,7 +25,6 @@ static inline void	dl__relink(t_dlist **lst, t_dlist *elem)
 	{
 		elem->next->prev = elem->prev;
 		elem->prev->next = elem->next;
-		*lst = NULL;
 	}
 	else if (elem->next)
 	{

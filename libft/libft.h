@@ -187,6 +187,7 @@ int			dl_prv_find(t_dlist *lst, void *data);
 int			dl_nxt_size(t_dlist *lst);
 int			dl_prv_size(t_dlist *lst);
 
+t_dlist		*dl_erase(t_dlist *current, void (*del)(void *));
 t_dlist		*dl_first(t_dlist *lst);
 t_dlist		*dl_last(t_dlist *lst);
 t_dlist		*dl_new(void *content);
@@ -197,7 +198,6 @@ void		dl_extend_head_head(t_dlist **head1, t_dlist *head2);
 void		dl_extend_head_tail(t_dlist **head1, t_dlist *tail2);
 void		dl_extend_tail_head(t_dlist **tail1, t_dlist *head2);
 void		dl_extend_tail_tail(t_dlist **tail1, t_dlist *tail2);
-void		dl_erase(t_dlist **current, void (*del)(void *));
 
 void		dl_nxt_clear(t_dlist **lst, void (*del)(void *));
 void		dl_nxt_insert_head(t_dlist **curr, t_dlist *head);

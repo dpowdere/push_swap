@@ -16,23 +16,24 @@
 #include "libft.h"
 
 /*
-** Erases an element and moves *lst pointer to the next one
+** Erases an element and returns the next one if available,
+** or the previous one.
 */
 
-void	dl_erase(t_dlist **lst, void (*del)(void *))
+t_dlist	*dl_erase(t_dlist *curr, void (*del)(void *))
 {
-	t_dlist	*curr;
+	t_dlist	*ret;
 
-	if (!lst || !*lst || !del)
-		return ;
-	curr = *lst;
+	if (!curr || !del)
+		return (curr);
 	if (curr->prev)
 		curr->prev->next = curr->next;
 	if (curr->next)
 		curr->next->prev = curr->prev;
-	*lst = curr->next;
-	curr->next = NULL;
-	curr->prev = NULL;
+	ret = curr->next;
+	if (!ret)
+		ret = curr->prev;
 	(*del)(curr->content);
 	free(curr);
+	return (ret);
 }

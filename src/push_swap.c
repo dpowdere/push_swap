@@ -20,7 +20,6 @@ int	main(int argc, char *argv[])
 	c = ps_check_args(argc, argv);
 	ps_resolve_cmds(c);
 	dl_nxt_reverse(&c->resolved_cmds);
-	ps_print_cmds_debug(c);
 	ps_optimize_cmds(c);
 	ps_print_cmds(c);
 	ps_config_free(c);
