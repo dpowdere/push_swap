@@ -4,9 +4,10 @@
     "libft.h": "c"
   },
   "files.exclude": {
-    "tester": true,
-    "tester_complexity": true,
-    "tester_visualizer": true,
-    "tester.sh": true
+    "**/tester*": true,
+    "**/checker*": true,
+    "push_swap": true,
+    "obj": true,
+    ".vscode": true
   }
 }

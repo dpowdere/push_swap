@@ -18,7 +18,7 @@
 
 # include <libft.h>
 
-enum e_cmd
+typedef enum e_cmd
 {
 	PSCMD_PA,
 	PSCMD_PB,
@@ -32,7 +32,7 @@ enum e_cmd
 	PSCMD_RRB,
 	PSCMD_RRR,
 	PSCMD_TERMINATOR
-};
+}			t_op;
 
 typedef struct s_cmd
 {
