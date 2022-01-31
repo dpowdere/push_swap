@@ -5,6 +5,7 @@
 *.o
 *.out
 *.swp
+/core*
 /push_swap
 /checker
 /checker_*

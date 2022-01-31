@@ -73,7 +73,7 @@ static int	find_sorted_position_in_rotated_sorted_stack(
 	return (ix);
 }
 
-static void	sort_planner(t_config *c)
+static void	quadratic_sort_with_planner(t_config *c)
 {
 	enum e_cmd	cmd;
 	int			i;
@@ -113,12 +113,189 @@ static void	sort_planner(t_config *c)
 		resolve_cmd(c, cmd);
 }
 
+/*
+#include <assert.h>
+#include <libftdbg.h>
+*/
+
+int	find_uppermedian(t_config *c, t_stack *stack, int size)
+{
+	t_dlist		*cursor;
+	t_rbtree	*tree_node;
+	int			i;
+	int			minimum;
+
+	i = size - 1;
+	minimum = *(int *)stack->top->content;
+	cursor = stack->top->next;
+	while (i-- > 0)
+	{
+		if (*(int *)cursor->content < minimum)
+			minimum = *(int *)cursor->content;
+		cursor = cursor->next;
+	}
+	tree_node = rbt_find(c->tree, ft_intcmp, &minimum);
+	i = size / 2;
+	while (i-- > 0)
+		tree_node = rbt_next(tree_node);
+	return (*(int *)tree_node->key);
+}
+
+void	sort_stack_tops(t_config *c)
+{
+	if (*(int *)c->a->top->content > *(int *)c->a->top->next->content
+		&& *(int *)c->b->top->content < *(int *)c->b->top->next->content)
+		resolve_cmd(c, PSCMD_SS);
+	else if (*(int *)c->a->top->content > *(int *)c->a->top->next->content)
+		resolve_cmd(c, PSCMD_SA);
+	else if (*(int *)c->b->top->content < *(int *)c->b->top->next->content)
+		resolve_cmd(c, PSCMD_SB);
+	resolve_cmd(c, PSCMD_PA);
+	resolve_cmd(c, PSCMD_PA);
+}
+
+void	sort_right_stack_nlogn(t_config *c, int size)
+{
+	int	median;
+	int	i;
+	/*
+	int left, right;
+
+	ft_eprint(AEC_RED "sort right stack " AEC_RESET);
+	ft_putnbr_fd(size, STDERR_FILENO);
+	ft_eprint("\n");
+	ft_stack_intDebug(c->a);
+	ft_stack_intDebug(c->b);
+	*/
+
+	if (size == 0)
+		return ;
+	else if (size == 1)
+		resolve_cmd(c, PSCMD_PA);
+	else if (size == 2)
+	{
+		if (*(int *)c->b->top->content < *(int *)c->b->top->next->content)
+			resolve_cmd(c, PSCMD_SB);
+		resolve_cmd(c, PSCMD_PA);
+		resolve_cmd(c, PSCMD_PA);
+	}
+	else
+	{
+		median = find_uppermedian(c, c->b, size);
+		i = 0;
+		/*
+		left = right = 0;
+		*/
+		while (i++ < size)
+		{
+			if (*(int *)c->b->top->content >= median)
+			/*
+			{
+				*/
+				resolve_cmd(c, PSCMD_PA);
+				/*
+				++left;
+			}
+			*/
+			else
+			/*
+			{
+				*/
+				resolve_cmd(c, PSCMD_RB);
+				/*
+				++right;
+			}
+			*/
+		}
+		/*
+		ft_putnbr_fd(median, STDERR_FILENO);
+		ft_eprint(", ");
+		ft_putnbr_fd(left, STDERR_FILENO);
+		ft_eprint("-");
+		ft_putnbr_fd(right, STDERR_FILENO);
+		ft_eprint("\n");
+		assert(right == left - (size %2 == 1));
+		*/
+		i = size / 2;
+		while (i-- > 0)
+			resolve_cmd(c, PSCMD_RRB);
+		sort_left_stack_nlogn(c, size / 2 + (size % 2 == 1));
+		sort_right_stack_nlogn(c, size / 2);
+	}
+}
+
+void	sort_left_stack_nlogn(t_config *c, int size)
+{
+	int	median;
+	int	i;
+	/*
+	int left, right;
+
+	ft_eprint(AEC_RED "sort left stack " AEC_RESET);
+	ft_putnbr_fd(size, STDERR_FILENO);
+	ft_eprint("\n");
+	ft_stack_intDebug(c->a);
+	ft_stack_intDebug(c->b);
+	*/
+
+	if (size < 2)
+		return ;
+	else if (size == 2
+		&& *(int *)c->a->top->content > *(int *)c->a->top->next->content)
+		resolve_cmd(c, PSCMD_SA);
+	else
+	{
+		median = find_uppermedian(c, c->a, size);
+		i = 0;
+		/*
+		left = right = 0;
+		*/
+		while (i++ < size)
+		{
+			if (*(int *)c->a->top->content < median)
+			/*
+			{
+				*/
+				resolve_cmd(c, PSCMD_PB);
+				/*
+				++right;
+			}
+			*/
+			else
+			/*
+			{
+				*/
+				resolve_cmd(c, PSCMD_RA);
+				/*
+				++left;
+			}
+			*/
+		}
+		/*
+		ft_putnbr_fd(median, STDERR_FILENO);
+		ft_eprint(", ");
+		ft_putnbr_fd(left, STDERR_FILENO);
+		ft_eprint("-");
+		ft_putnbr_fd(right, STDERR_FILENO);
+		ft_eprint("\n");
+		assert(left - (size % 2 == 1) == right);
+		*/
+		i = size / 2 + (size % 2 == 1);
+		while (i-- > 0)
+			resolve_cmd(c, PSCMD_RRA);
+		sort_left_stack_nlogn(c, size / 2 + (size % 2 == 1));
+		sort_right_stack_nlogn(c, size / 2);
+	}
+}
+
 void	ps_resolve_cmds(t_config *c)
 {
-	if (c->a->size < 2)
+	if (c->size < 2)
 		return ;
-	else if (c->a->size < 4)
+	else if (c->size < 4)
 		sort_triplet(c);
+	else if (c->size < 8)
+		quadratic_sort_with_planner(c);
 	else
-		sort_planner(c);
+		sort_left_stack_nlogn(c, c->size);
 }

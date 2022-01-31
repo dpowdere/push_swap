@@ -75,8 +75,11 @@ void	ft_stack_intDebug(t_stack *stack)
 {
 	t_dlist	*cursor;
 
+	/*
 	debug_int_stack_header(stack);
 	ft_eprint("top-to-bottom:" AEC_YELLOW);
+	*/ ft_eprint(AEC_YELLOW);
+
 	cursor = stack->top;
 	while (cursor)
 	{
@@ -84,6 +87,7 @@ void	ft_stack_intDebug(t_stack *stack)
 		ft_putnbr_fd(*(int *)cursor->content, STDERR_FILENO);
 		cursor = cursor->next;
 	}
+	/*
 	ft_eprint(AEC_RESET "\nbottom-to-top:" AEC_YELLOW);
 	cursor = stack->bottom;
 	while (cursor)
@@ -92,5 +96,6 @@ void	ft_stack_intDebug(t_stack *stack)
 		ft_putnbr_fd(*(int *)cursor->content, STDERR_FILENO);
 		cursor = cursor->prev;
 	}
+	*/
 	ft_eprint(AEC_RESET "\n");
 }

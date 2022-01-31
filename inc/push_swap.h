@@ -53,6 +53,8 @@ typedef struct s_config
 }			t_config;
 
 void		fake_free(void *p);
+void		sort_left_stack_nlogn(t_config *c, int size);
+void		sort_right_stack_nlogn(t_config *c, int size);
 t_config	*ps_check_args(int argc, char **argv);
 void		ps_check_result(t_config *c);
 void		ps_config_free(t_config *c);
