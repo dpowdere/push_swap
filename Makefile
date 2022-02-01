@@ -4,6 +4,7 @@ CHECKER := checker
 
 RESOLVER_SRCS := push_swap.c check_args.c config.c \
 	resolve_cmds.c optimize_cmds.c print_cmds.c \
+	nlogn_sort.c n2_sort.c planner.c planner_utils.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c
 CHECKER_SRCS := checker.c check_args.c check_result.c config.c \
 	cmd_push.c cmd_swap.c cmd_rotate.c cmd_reverse_rotate.c

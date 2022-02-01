@@ -70,9 +70,21 @@ typedef struct s_precalc
 	t_script	script;
 }			t_precalc;
 
+void		execute_optimal_plan(t_config *c, t_precalc *p);
 void		fake_free(void *p);
+void		final_rotation(t_config *c);
+void		find_and_execute_optimal_plan(t_config *c);
+t_precalc	find_optimal_plan(t_config *c, int i, t_dlist *x);
+int			find_sorted_position_in_rotated_sorted_stack(
+				t_dlist *elem, t_stack *stack);
+int			find_uppermedian(t_config *c, t_stack *stack, int size);
+void		quadratic_sort_with_planner(t_config *c);
+void		resolve_cmd(t_config *c, enum e_cmd cmd);
+void		resolve_cmd_sequence(t_config *c, enum e_cmd cmd, int i);
 void		sort_left_stack_nlogn(t_config *c, int size);
 void		sort_right_stack_nlogn(t_config *c, int size);
+void		sort_triplet(t_config *c);
+
 t_config	*ps_check_args(int argc, char **argv);
 void		ps_check_result(t_config *c);
 void		ps_config_free(t_config *c);
@@ -80,7 +92,6 @@ t_config	*ps_config_init(void);
 void		ps_optimize_cmds(t_config *c);
 void		ps_resolve_cmds(t_config *c);
 void		ps_print_cmds(t_config *c);
-void		ps_print_cmds_debug(t_config *c);
 
 void		cmd_push_a(t_stack *a, t_stack *b);
 void		cmd_push_b(t_stack *a, t_stack *b);
