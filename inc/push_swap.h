@@ -52,6 +52,24 @@ typedef struct s_config
 	int			(*read)(t_cmd *cmds, t_cmd **cmd, int *eof);
 }			t_config;
 
+typedef enum e_script
+{
+	PSS_RR,
+	PSS_RRR,
+	PSS_RB_RRA,
+	PSS_RRB_RA
+}			t_script;
+
+typedef struct s_precalc
+{
+	int			ra;
+	int			rra;
+	int			rb;
+	int			rrb;
+	int			best;
+	t_script	script;
+}			t_precalc;
+
 void		fake_free(void *p);
 void		sort_left_stack_nlogn(t_config *c, int size);
 void		sort_right_stack_nlogn(t_config *c, int size);

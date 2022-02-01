@@ -70,6 +70,8 @@ ssize_t		ft_write(int fd, const void *buf, size_t count);
 */
 int			ft_get_next_line(int fd, char **line);
 int			ft_is_big_endian(void);
+int			ft_max(int a, int b);
+int			ft_min(int a, int b);
 int			ft_str_index(const char *s, int c);
 int			ft_str_endswith(const char *s, const char *suffix);
 int			ft_str_startswith(const char *s, const char *prefix);

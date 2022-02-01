@@ -22,6 +22,12 @@ static void	resolve_cmd(t_config *c, enum e_cmd cmd)
 	c->cmds[cmd].cmd(c->a, c->b);
 }
 
+static void	resolve_cmd_sequence(t_config *c, enum e_cmd cmd, int i)
+{
+	while (i-- > 0)
+		resolve_cmd(c, cmd);
+}
+
 static void	sort_triplet(t_config *c)
 {
 	t_stack *const	stack = c->a;
@@ -73,21 +79,11 @@ static int	find_sorted_position_in_rotated_sorted_stack(
 	return (ix);
 }
 
-static void	quadratic_sort_with_planner(t_config *c)
+static void	without_planner(t_config *c)
 {
 	enum e_cmd	cmd;
 	int			i;
 
-	i = c->a->size - 3;
-	while (i-- > 0)
-	{
-		if (c->size >= 500 && c->a->size > 3 && c->b->size > 1
-			&& *(int *)c->a->top->content > *(int *)c->a->top->next->content
-			&& *(int *)c->b->top->content < *(int *)c->b->top->next->content)
-			resolve_cmd(c, PSCMD_SS);
-		resolve_cmd(c, PSCMD_PB);
-	}
-	sort_triplet(c);
 	while (c->b->top)
 	{
 		i = find_sorted_position_in_rotated_sorted_stack(c->b->top, c->a);
@@ -111,6 +107,108 @@ static void	quadratic_sort_with_planner(t_config *c)
 		i = c->a->size - i;
 	while (i-- > 0)
 		resolve_cmd(c, cmd);
+}
+
+#include <limits.h>
+
+static t_precalc	optimal_operations_count(t_config *c, int i, t_dlist *x)
+{
+	t_precalc	p;
+	int			ix;
+
+	p.rb = i;
+	p.rrb = c->b->size - i;
+	ix = find_sorted_position_in_rotated_sorted_stack(x, c->a);
+	p.ra = ix;
+	p.rra = c->a->size - ix;
+	p.best = ft_max(p.rb, p.ra);
+	p.script = PSS_RR;
+	if (p.best > ft_max(p.rrb, p.rra))
+	{
+		p.best = ft_max(p.rrb, p.rra);
+		p.script = PSS_RRR;
+	}
+	if (p.best > p.rrb + p.ra)
+	{
+		p.best = p.rrb + p.ra;
+		p.script = PSS_RRB_RA;
+	}
+	if (p.best > p.rb + p.rra)
+	{
+		p.best = p.rb + p.rra;
+		p.script = PSS_RB_RRA;
+	}
+	p.best += 1;
+	return (p);
+}
+
+static void	optimal_operations(t_config *c, t_precalc *p)
+{
+	if (p->script == PSS_RB_RRA)
+	{
+		resolve_cmd_sequence(c, PSCMD_RB, p->rb);
+		resolve_cmd_sequence(c, PSCMD_RRA, p->rra);
+	}
+	else if (p->script == PSS_RRB_RA)
+	{
+		resolve_cmd_sequence(c, PSCMD_RRB, p->rrb);
+		resolve_cmd_sequence(c, PSCMD_RA, p->ra);
+	}
+	else if (p->script == PSS_RR)
+	{
+		resolve_cmd_sequence(c, PSCMD_RR, ft_min(p->rb, p->ra));
+		if (p->rb > p->ra)
+			resolve_cmd_sequence(c, PSCMD_RB, p->rb - p->ra);
+		else if (p->rb < p->ra)
+			resolve_cmd_sequence(c, PSCMD_RA, p->ra - p->rb);
+	}
+	else if (p->script == PSS_RRR)
+	{
+		resolve_cmd_sequence(c, PSCMD_RRR, ft_min(p->rrb, p->rra));
+		if (p->rrb > p->rra)
+			resolve_cmd_sequence(c, PSCMD_RRB, p->rrb - p->rra);
+		else if (p->rrb < p->rra)
+			resolve_cmd_sequence(c, PSCMD_RRA, p->rra - p->rrb);
+	}
+	resolve_cmd(c, PSCMD_PA);
+}
+
+static void	with_planner(t_config *c)
+{
+	t_dlist		*x;
+	t_precalc	x_best;
+	t_precalc	best;
+	int			i;
+
+	i = 0;
+	best = optimal_operations_count(c, i++, c->b->top);
+	x = c->b->top->next;
+	while (x)
+	{
+		x_best = optimal_operations_count(c, i++, x);
+		if (x_best.best < best.best)
+			ft_memcpy(&best, &x_best, sizeof(t_precalc));
+		x = x->next;
+	}
+	optimal_operations(c, &best);
+}
+
+static void	quadratic_sort_with_planner(t_config *c)
+{
+	int	i;
+
+	i = c->a->size - 3;
+	while (i-- > 0)
+	{
+		if (c->a->size > 3 && c->b->size > 1
+			&& *(int *)c->a->top->content > *(int *)c->a->top->next->content
+			&& *(int *)c->b->top->content < *(int *)c->b->top->next->content)
+			resolve_cmd(c, PSCMD_SS);
+		resolve_cmd(c, PSCMD_PB);
+	}
+	sort_triplet(c);
+	(void)without_planner; // delete
+	with_planner(c);
 }
 
 /*
@@ -294,7 +392,7 @@ void	ps_resolve_cmds(t_config *c)
 		return ;
 	else if (c->size < 4)
 		sort_triplet(c);
-	else if (c->size < 8)
+	else if (c->size < 60000)
 		quadratic_sort_with_planner(c);
 	else
 		sort_left_stack_nlogn(c, c->size);
