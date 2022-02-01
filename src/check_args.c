@@ -6,14 +6,13 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 22:29:46 by dpowdere          #+#    #+#             */
-/*   Updated: 2022/01/22 22:30:34 by dpowdere         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:57:18 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <stddef.h>
 #include <libft.h>
-#include <libftdbg.h>
 #include "push_swap.h"
 
 #define WHITESPACE_CHARS	" \t\n\r\v\f"

@@ -27,13 +27,7 @@ CPPFLAGS	:= -I$(INC) -I$(LIB) -MMD -MP
 LDFLAGS		:= -L$(LIB)
 LDLIBS		:= -lft
 ifdef DEBUG
-  LIBDBG := $(LIB)dbg
-  LIBFT += $(LIBDBG)/$(LIBDBG).a
-  LIBFT_OBJS += $(addprefix $(LIBDBG)/, $(shell $(MAKE) -sC $(LIBDBG) objls))
   CFLAGS += -g3
-  CPPFLAGS := -I$(LIBDBG) $(CPPFLAGS)
-  LDFLAGS += -L$(LIBDBG)
-  LDLIBS := -lftdbg $(LDLIBS)
 endif
 
 all: $(RESOLVER) $(CHECKER)
@@ -43,9 +37,6 @@ bonus: all
 clean:
 	$(RM) -r $(OBJ)
 	$(MAKE) -C $(LIB) --no-print-directory clean
-ifdef DEBUG
-	$(MAKE) -C $(LIBDBG) --no-print-directory clean
-endif
 
 fclean: clean
 	$(RM) $(RESOLVER) $(CHECKER) $(LIBFT)
@@ -65,9 +56,6 @@ $(OBJ):
 
 $(LIB)/%.o: $(LIB)/%.c
 	$(MAKE) -C $(LIB) --no-print-directory
-
-$(LIBDBG)/%.o: $(LIBDBG)/%.c
-	$(MAKE) -C $(LIBDBG) --no-print-directory
 
 $(RESOLVER): $(RESOLVER_OBJS) $(LIBFT_OBJS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(RESOLVER_OBJS) $(LDLIBS)

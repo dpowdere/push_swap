@@ -1,8 +1,0 @@
-.*
-!.gitignore
-*.[aod]
-*.gch
-*.out
-*.swp
-*.swo
-test*
