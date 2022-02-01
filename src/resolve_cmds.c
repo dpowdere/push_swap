@@ -428,7 +428,7 @@ void	ps_resolve_cmds(t_config *c)
 		return ;
 	else if (c->size < 4)
 		sort_triplet(c);
-	else if (c->size < 60000)
+	else if (c->size < 750)
 		quadratic_sort_with_planner(c);
 	else
 		sort_left_stack_nlogn(c, c->size);
