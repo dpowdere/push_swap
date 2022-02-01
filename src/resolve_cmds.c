@@ -173,24 +173,60 @@ static void	optimal_operations(t_config *c, t_precalc *p)
 	resolve_cmd(c, PSCMD_PA);
 }
 
+static void	final_rotation(t_config *c)
+{
+	int		i;
+	int		ix;
+	t_op	cmd;
+	t_dlist	*dl;
+
+	i = 0;
+	ix = 0;
+	dl = c->a->top;
+	while (dl && dl->next)
+	{
+		++i;
+		if (*(int *)dl->content > *(int *)dl->next->content)
+		{
+			ix = i;
+			break ;
+		}
+		dl = dl->next;
+	}
+	cmd = PSCMD_RA;
+	if (c->a->size - ix < ix)
+	{
+		cmd = PSCMD_RRA;
+		ix = c->a->size - ix;
+	}
+	resolve_cmd_sequence(c, cmd, ix);
+}
+
 static void	with_planner(t_config *c)
 {
 	t_dlist		*x;
+	t_dlist		*y;
 	t_precalc	x_best;
 	t_precalc	best;
 	int			i;
 
-	i = 0;
-	best = optimal_operations_count(c, i++, c->b->top);
-	x = c->b->top->next;
-	while (x)
+	y = c->b->top;
+	while (y)
 	{
-		x_best = optimal_operations_count(c, i++, x);
-		if (x_best.best < best.best)
-			ft_memcpy(&best, &x_best, sizeof(t_precalc));
-		x = x->next;
+		i = 0;
+		best = optimal_operations_count(c, i++, y);
+		x = y->next;
+		while (x)
+		{
+			x_best = optimal_operations_count(c, i++, x);
+			if (x_best.best < best.best)
+				ft_memcpy(&best, &x_best, sizeof(t_precalc));
+			x = x->next;
+		}
+		optimal_operations(c, &best);
+		y = c->b->top;
 	}
-	optimal_operations(c, &best);
+	final_rotation(c);
 }
 
 static void	quadratic_sort_with_planner(t_config *c)
